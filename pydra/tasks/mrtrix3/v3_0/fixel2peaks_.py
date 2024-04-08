@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -110,8 +112,8 @@ input_fields = [
     ),
 ]
 
-fixel2peaks_input_spec = specs.SpecInfo(
-    name="fixel2peaks_input", fields=input_fields, bases=(specs.ShellSpec,)
+Fixel2PeaksInputSpec = specs.SpecInfo(
+    name="Fixel2PeaksInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -124,12 +126,12 @@ output_fields = [
         },
     ),
 ]
-fixel2peaks_output_spec = specs.SpecInfo(
-    name="fixel2peaks_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Fixel2PeaksOutputSpec = specs.SpecInfo(
+    name="Fixel2PeaksOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fixel2peaks(ShellCommandTask):
+class Fixel2Peaks(ShellCommandTask):
     """If a fixel data file is provided as input, then the 3-vectors in the output image will be scaled based on the data in that file. If the input is instead the fixel directory, or the index or directions file, then all output 3-vectors will possess unit norm.
 
         Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
@@ -145,11 +147,11 @@ class fixel2peaks(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -166,5 +168,5 @@ class fixel2peaks(ShellCommandTask):
     """
 
     executable = "fixel2peaks"
-    input_spec = fixel2peaks_input_spec
-    output_spec = fixel2peaks_output_spec
+    input_spec = Fixel2PeaksInputSpec
+    output_spec = Fixel2PeaksOutputSpec

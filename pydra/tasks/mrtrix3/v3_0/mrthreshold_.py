@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the (optional) output binary image mask""",
         },
     ),
@@ -186,26 +188,26 @@ input_fields = [
     ),
 ]
 
-mrthreshold_input_spec = specs.SpecInfo(
-    name="mrthreshold_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrThresholdInputSpec = specs.SpecInfo(
+    name="MrThresholdInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the (optional) output binary image mask""",
         },
     ),
 ]
-mrthreshold_output_spec = specs.SpecInfo(
-    name="mrthreshold_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrThresholdOutputSpec = specs.SpecInfo(
+    name="MrThresholdOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrthreshold(ShellCommandTask):
+class MrThreshold(ShellCommandTask):
     """The threshold value to be applied can be determined in one of a number of ways:
 
         - If no relevant command-line option is used, the command will automatically determine an optimal threshold;
@@ -233,11 +235,11 @@ class mrthreshold(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -254,5 +256,5 @@ class mrthreshold(ShellCommandTask):
     """
 
     executable = "mrthreshold"
-    input_spec = mrthreshold_input_spec
-    output_spec = mrthreshold_output_spec
+    input_spec = MrThresholdInputSpec
+    output_spec = MrThresholdOutputSpec

@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -181,8 +183,8 @@ input_fields = [
     ),
 ]
 
-dwi2tensor_input_spec = specs.SpecInfo(
-    name="dwi2tensor_input", fields=input_fields, bases=(specs.ShellSpec,)
+Dwi2TensorInputSpec = specs.SpecInfo(
+    name="Dwi2TensorInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -216,12 +218,12 @@ output_fields = [
         },
     ),
 ]
-dwi2tensor_output_spec = specs.SpecInfo(
-    name="dwi2tensor_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Dwi2TensorOutputSpec = specs.SpecInfo(
+    name="Dwi2TensorOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dwi2tensor(ShellCommandTask):
+class Dwi2Tensor(ShellCommandTask):
     """By default, the diffusion tensor (and optionally the kurtosis tensor) is fitted to the log-signal in two steps: firstly, using weighted least-squares (WLS) with weights based on the empirical signal intensities; secondly, by further iterated weighted least-squares (IWLS) with weights determined by the signal predictions from the previous iteration (by default, 2 iterations will be performed). This behaviour can be altered in two ways:
 
         * The -ols option will cause the first fitting step to be performed using ordinary least-squares (OLS); that is, all measurements contribute equally to the fit, instead of the default behaviour of weighting based on the empirical signal intensities.
@@ -266,11 +268,11 @@ class dwi2tensor(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Ben Jeurissen (ben.jeurissen@uantwerpen.be)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -287,5 +289,5 @@ class dwi2tensor(ShellCommandTask):
     """
 
     executable = "dwi2tensor"
-    input_spec = dwi2tensor_input_spec
-    output_spec = dwi2tensor_output_spec
+    input_spec = Dwi2TensorInputSpec
+    output_spec = Dwi2TensorOutputSpec

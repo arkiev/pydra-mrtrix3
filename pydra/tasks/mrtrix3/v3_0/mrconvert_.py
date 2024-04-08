@@ -1,14 +1,16 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
-# from fileformats.medimage_mrtrix3 import ImageIn, ImageOut, Tracks  # noqa: F401
+from fileformats.medimage_mrtrix3 import ImageIn, ImageOut, Tracks  # noqa: F401
 from pydra.engine import specs, ShellCommandTask
 
 
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         File,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
-        str,
+        "out_file",
+        Path,
         {
             "argstr": "",
             "position": 1,
-            # "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
@@ -72,16 +74,16 @@ input_fields = [
             "help_string": """import data from a JSON file into header key-value pairs""",
         },
     ),
-    # (
-    #     "json_export",
-    #     ty.Union[Path, bool],
-    #     False,
-    #     {
-    #         "argstr": "-json_export",
-    #         "output_file_template": "json_export.txt",
-    #         "help_string": """export data from an image header key-value pairs into a JSON file""",
-    #     },
-    # ),
+    (
+        "json_export",
+        ty.Union[Path, bool],
+        False,
+        {
+            "argstr": "-json_export",
+            "output_file_template": "json_export.txt",
+            "help_string": """export data from an image header key-value pairs into a JSON file""",
+        },
+    ),
     # Options to modify generic header entries Option Group
     (
         "clear_property",
@@ -201,29 +203,29 @@ input_fields = [
         },
     ),
     # DW gradient table export options Option Group
-    # (
-    #     "export_grad_mrtrix",
-    #     ty.Union[Path, bool],
-    #     False,
-    #     {
-    #         "argstr": "-export_grad_mrtrix",
-    #         "output_file_template": "export_grad_mrtrix.txt",
-    #         "help_string": """export the diffusion-weighted gradient table to file in MRtrix format""",
-    #     },
-    # ),
-    # (
-    #     "export_grad_fsl",
-    #     ty.Union[ty.Tuple[Path, Path], bool],
-    #     False,
-    #     {
-    #         "argstr": "-export_grad_fsl",
-    #         "output_file_template": (
-    #             "export_grad_fsl0.txt",
-    #             "export_grad_fsl1.txt",
-    #         ),
-    #         "help_string": """export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format""",
-    #     },
-    # ),
+    (
+        "export_grad_mrtrix",
+        ty.Union[Path, bool],
+        False,
+        {
+            "argstr": "-export_grad_mrtrix",
+            "output_file_template": "export_grad_mrtrix.txt",
+            "help_string": """export the diffusion-weighted gradient table to file in MRtrix format""",
+        },
+    ),
+    (
+        "export_grad_fsl",
+        ty.Union[ty.Tuple[Path, Path], bool],
+        False,
+        {
+            "argstr": "-export_grad_fsl",
+            "output_file_template": (
+                "export_grad_fsl0.txt",
+                "export_grad_fsl1.txt",
+            ),
+            "help_string": """export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format""",
+        },
+    ),
     # Options for importing phase-encode tables Option Group
     (
         "import_pe_table",
@@ -242,29 +244,29 @@ input_fields = [
         },
     ),
     # Options for exporting phase-encode tables Option Group
-    # (
-    #     "export_pe_table",
-    #     ty.Union[Path, bool],
-    #     False,
-    #     {
-    #         "argstr": "-export_pe_table",
-    #         "output_file_template": "export_pe_table.txt",
-    #         "help_string": """export phase-encoding table to file""",
-    #     },
-    # ),
-    # (
-    #     "export_pe_eddy",
-    #     ty.Union[ty.Tuple[Path, Path], bool],
-    #     False,
-    #     {
-    #         "argstr": "-export_pe_eddy",
-    #         "output_file_template": (
-    #             "export_pe_eddy0.txt",
-    #             "export_pe_eddy1.txt",
-    #         ),
-    #         "help_string": """export phase-encoding information to an EDDY-style config / index file pair""",
-    #     },
-    # ),
+    (
+        "export_pe_table",
+        ty.Union[Path, bool],
+        False,
+        {
+            "argstr": "-export_pe_table",
+            "output_file_template": "export_pe_table.txt",
+            "help_string": """export phase-encoding table to file""",
+        },
+    ),
+    (
+        "export_pe_eddy",
+        ty.Union[ty.Tuple[Path, Path], bool],
+        False,
+        {
+            "argstr": "-export_pe_eddy",
+            "output_file_template": (
+                "export_pe_eddy0.txt",
+                "export_pe_eddy1.txt",
+            ),
+            "help_string": """export phase-encoding information to an EDDY-style config / index file pair""",
+        },
+    ),
     # Standard options
     (
         "info",
@@ -332,71 +334,61 @@ input_fields = [
     ),
 ]
 
-mrconvert_input_spec = specs.SpecInfo(
-    name="mrconvert_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrConvertInputSpec = specs.SpecInfo(
+    name="MrConvertInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
-def output_path_fcn(output: Path):
-    return Path(output) 
 
 output_fields = [
     (
-        "output",
-        str,
+        "out_file",
+        File,
         {
             "help_string": """the output image.""",
         },
     ),
-    ( 
-        "output_path",
-        Path,
+    (
+        "json_export",
+        File,
         {
-            "help_string": "path to subject FS outputs",
-            "callable": output_path_fcn,
+            "help_string": """export data from an image header key-value pairs into a JSON file""",
         },
     ),
-    # (
-    #     "json_export",
-    #     File,
-    #     {
-    #         "help_string": """export data from an image header key-value pairs into a JSON file""",
-    #     },
-    # ),
-    # (
-    #     "export_grad_mrtrix",
-    #     File,
-    #     {
-    #         "help_string": """export the diffusion-weighted gradient table to file in MRtrix format""",
-    #     },
-    # ),
-    # (
-    #     "export_grad_fsl",
-    #     ty.Tuple[File, File],
-    #     {
-    #         "help_string": """export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format""",
-    #     },
-    # ),
-    # (
-    #     "export_pe_table",
-    #     File,
-    #     {
-    #         "help_string": """export phase-encoding table to file""",
-    #     },
-    # ),
-    # (
-    #     "export_pe_eddy",
-    #     ty.Tuple[File, File],
-    #     {
-    #         "help_string": """export phase-encoding information to an EDDY-style config / index file pair""",
-    #     },
-    # ),
+    (
+        "export_grad_mrtrix",
+        File,
+        {
+            "help_string": """export the diffusion-weighted gradient table to file in MRtrix format""",
+        },
+    ),
+    (
+        "export_grad_fsl",
+        ty.Tuple[File, File],
+        {
+            "help_string": """export the diffusion-weighted gradient table to files in FSL (bvecs / bvals) format""",
+        },
+    ),
+    (
+        "export_pe_table",
+        File,
+        {
+            "help_string": """export phase-encoding table to file""",
+        },
+    ),
+    (
+        "export_pe_eddy",
+        ty.Tuple[File, File],
+        {
+            "help_string": """export phase-encoding information to an EDDY-style config / index file pair""",
+        },
+    ),
 ]
-mrconvert_output_spec = specs.SpecInfo(
-    name="mrconvert_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrConvertOutputSpec = specs.SpecInfo(
+    name="MrConvertOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrconvert(ShellCommandTask):
+class MrConvert(ShellCommandTask):
     """If used correctly, this program can be a very useful workhorse. In addition to converting images between different formats, it can be used to extract specific studies from a data set, extract a specific region of interest, or flip the images. Some of the possible operations are described in more detail below.
 
         Note that for both the -coord and -axes options, indexing starts from 0 rather than 1. E.g. -coord 3 <#> selects volumes (the fourth dimension) from the series; -axes 0,1,2 includes only the three spatial axes in the output image.
@@ -481,11 +473,11 @@ class mrconvert(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -502,5 +494,5 @@ class mrconvert(ShellCommandTask):
     """
 
     executable = "mrconvert"
-    input_spec = mrconvert_input_spec
-    output_spec = mrconvert_output_spec
+    input_spec = MrConvertInputSpec
+    output_spec = MrConvertOutputSpec

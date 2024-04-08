@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -28,12 +30,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image consisting of the amplitude of the SH functions along the specified directions.""",
         },
     ),
@@ -189,26 +191,26 @@ input_fields = [
     ),
 ]
 
-sh2amp_input_spec = specs.SpecInfo(
-    name="sh2amp_input", fields=input_fields, bases=(specs.ShellSpec,)
+Sh2AmpInputSpec = specs.SpecInfo(
+    name="Sh2AmpInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image consisting of the amplitude of the SH functions along the specified directions.""",
         },
     ),
 ]
-sh2amp_output_spec = specs.SpecInfo(
-    name="sh2amp_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Sh2AmpOutputSpec = specs.SpecInfo(
+    name="Sh2AmpOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class sh2amp(ShellCommandTask):
+class Sh2Amp(ShellCommandTask):
     """The input image should consist of a 4D or 5D image, with SH coefficients along the 4th dimension according to the convention below. If 4D (or size 1 along the 5th dimension), the program expects to be provided with a single shell of directions. If 5D, each set of coefficients along the 5th dimension is understood to correspond to a different shell.
 
         The directions can be provided as:
@@ -234,11 +236,11 @@ class sh2amp(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -255,5 +257,5 @@ class sh2amp(ShellCommandTask):
     """
 
     executable = "sh2amp"
-    input_spec = sh2amp_input_spec
-    output_spec = sh2amp_output_spec
+    input_spec = Sh2AmpInputSpec
+    output_spec = Sh2AmpOutputSpec

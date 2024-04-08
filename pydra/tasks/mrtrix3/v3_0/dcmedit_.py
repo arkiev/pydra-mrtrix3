@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -111,18 +113,18 @@ WARNING: there is no guarantee that this command will remove all identiable info
     ),
 ]
 
-dcmedit_input_spec = specs.SpecInfo(
-    name="dcmedit_input", fields=input_fields, bases=(specs.ShellSpec,)
+DcmEditInputSpec = specs.SpecInfo(
+    name="DcmEditInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-dcmedit_output_spec = specs.SpecInfo(
-    name="dcmedit_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+DcmEditOutputSpec = specs.SpecInfo(
+    name="DcmEditOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dcmedit(ShellCommandTask):
+class DcmEdit(ShellCommandTask):
     """Note that this command simply replaces the existing values without modifying the DICOM structure in any way. Replacement text will be truncated if it is too long to fit inside the existing tag.
 
         WARNING: this command will modify existing data! It is recommended to run this command on a copy of the original data set to avoid loss of data.
@@ -137,11 +139,11 @@ class dcmedit(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -158,5 +160,5 @@ class dcmedit(ShellCommandTask):
     """
 
     executable = "dcmedit"
-    input_spec = dcmedit_input_spec
-    output_spec = dcmedit_output_spec
+    input_spec = DcmEditInputSpec
+    output_spec = DcmEditOutputSpec

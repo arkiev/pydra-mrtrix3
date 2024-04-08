@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,8 +10,8 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "image",
-        File,
+        "image_",
+        specs.MultiInputObj[ImageIn],
         {
             "argstr": "",
             "position": 0,
@@ -323,8 +325,8 @@ input_fields = [
     ),
 ]
 
-mrinfo_input_spec = specs.SpecInfo(
-    name="mrinfo_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrInfoInputSpec = specs.SpecInfo(
+    name="MrInfoInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -372,12 +374,12 @@ output_fields = [
         },
     ),
 ]
-mrinfo_output_spec = specs.SpecInfo(
-    name="mrinfo_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrInfoOutputSpec = specs.SpecInfo(
+    name="MrInfoOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrinfo(ShellCommandTask):
+class MrInfo(ShellCommandTask):
     """By default, all information contained in each image header will be printed to the console in a reader-friendly format.
 
         Alternatively, command-line options may be used to extract specific details from the header(s); these are printed to the console in a format more appropriate for scripting purposes or piping to file. If multiple options and/or images are provided, the requested header fields will be printed in the order in which they appear in the help page, with all requested details from each input image in sequence printed before the next image is processed.
@@ -398,11 +400,11 @@ class mrinfo(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (d.tournier@brain.org.au) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -419,5 +421,5 @@ class mrinfo(ShellCommandTask):
     """
 
     executable = "mrinfo"
-    input_spec = mrinfo_input_spec
-    output_spec = mrinfo_output_spec
+    input_spec = MrInfoInputSpec
+    output_spec = MrInfoOutputSpec

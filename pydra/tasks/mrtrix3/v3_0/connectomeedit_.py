@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -112,18 +114,18 @@ input_fields = [
     ),
 ]
 
-connectomeedit_input_spec = specs.SpecInfo(
-    name="connectomeedit_input", fields=input_fields, bases=(specs.ShellSpec,)
+ConnectomeEditInputSpec = specs.SpecInfo(
+    name="ConnectomeEditInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-connectomeedit_output_spec = specs.SpecInfo(
-    name="connectomeedit_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+ConnectomeEditOutputSpec = specs.SpecInfo(
+    name="ConnectomeEditOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class connectomeedit(ShellCommandTask):
+class ConnectomeEdit(ShellCommandTask):
     """
         References
         ----------
@@ -134,11 +136,11 @@ class connectomeedit(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Matteo Frigo (matteo.frigo@inria.fr)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -155,5 +157,5 @@ class connectomeedit(ShellCommandTask):
     """
 
     executable = "connectomeedit"
-    input_spec = connectomeedit_input_spec
-    output_spec = connectomeedit_output_spec
+    input_spec = ConnectomeEditInputSpec
+    output_spec = ConnectomeEditOutputSpec

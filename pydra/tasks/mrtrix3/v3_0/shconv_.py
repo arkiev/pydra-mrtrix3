@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -154,8 +156,8 @@ input_fields = [
     ),
 ]
 
-shconv_input_spec = specs.SpecInfo(
-    name="shconv_input", fields=input_fields, bases=(specs.ShellSpec,)
+ShConvInputSpec = specs.SpecInfo(
+    name="ShConvInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -168,12 +170,12 @@ output_fields = [
         },
     ),
 ]
-shconv_output_spec = specs.SpecInfo(
-    name="shconv_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+ShConvOutputSpec = specs.SpecInfo(
+    name="ShConvOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class shconv(ShellCommandTask):
+class ShConv(ShellCommandTask):
     """Provided with matching pairs of response function and ODF images (containing SH coefficients), perform spherical convolution to provide the corresponding SH coefficients of the signal.
 
         If multiple pairs of inputs are provided, their contributions will be summed into a single output.
@@ -196,11 +198,11 @@ class shconv(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -217,5 +219,5 @@ class shconv(ShellCommandTask):
     """
 
     executable = "shconv"
-    input_spec = shconv_input_spec
-    output_spec = shconv_output_spec
+    input_spec = ShConvInputSpec
+    output_spec = ShConvOutputSpec

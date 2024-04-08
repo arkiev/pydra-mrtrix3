@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -120,18 +122,18 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
 ]
 
-dirstat_input_spec = specs.SpecInfo(
-    name="dirstat_input", fields=input_fields, bases=(specs.ShellSpec,)
+DirStatInputSpec = specs.SpecInfo(
+    name="DirStatInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-dirstat_output_spec = specs.SpecInfo(
-    name="dirstat_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+DirStatOutputSpec = specs.SpecInfo(
+    name="DirStatOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dirstat(ShellCommandTask):
+class DirStat(ShellCommandTask):
     """This command will accept as inputs:
 
         - directions file in spherical coordinates (ASCII text, [ az el ] space-separated values, one per line);
@@ -189,11 +191,11 @@ class dirstat(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -210,5 +212,5 @@ class dirstat(ShellCommandTask):
     """
 
     executable = "dirstat"
-    input_spec = dirstat_input_spec
-    output_spec = dirstat_output_spec
+    input_spec = DirStatInputSpec
+    output_spec = DirStatOutputSpec

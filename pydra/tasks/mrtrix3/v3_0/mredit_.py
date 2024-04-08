@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the (optional) output image""",
         },
     ),
@@ -126,26 +128,26 @@ input_fields = [
     ),
 ]
 
-mredit_input_spec = specs.SpecInfo(
-    name="mredit_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrEditInputSpec = specs.SpecInfo(
+    name="MrEditInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the (optional) output image""",
         },
     ),
 ]
-mredit_output_spec = specs.SpecInfo(
-    name="mredit_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrEditOutputSpec = specs.SpecInfo(
+    name="MrEditOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mredit(ShellCommandTask):
+class MrEdit(ShellCommandTask):
     """A range of options are provided to enable direct editing of voxel intensities based on voxel / real-space coordinates. If only one image path is provided, the image will be edited in-place (use at own risk); if input and output image paths are provided, the output will contain the edited image, and the original image will not be modified in any way.
 
 
@@ -158,11 +160,11 @@ class mredit(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -179,5 +181,5 @@ class mredit(ShellCommandTask):
     """
 
     executable = "mredit"
-    input_spec = mredit_input_spec
-    output_spec = mredit_output_spec
+    input_spec = MrEditInputSpec
+    output_spec = MrEditOutputSpec

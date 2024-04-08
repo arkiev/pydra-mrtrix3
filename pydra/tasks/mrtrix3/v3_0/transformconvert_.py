@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -9,7 +11,7 @@ input_fields = [
     # Arguments
     (
         "input",
-        specs.MultiInputObj[ty.Any],
+        str,
         {
             "argstr": "",
             "position": 0,
@@ -22,7 +24,7 @@ input_fields = [
         str,
         {
             "argstr": "",
-            "position": 1,
+            "position": 4,
             "help_string": """the operation to perform, one of:
 flirt_import, itk_import""",
             "mandatory": True,
@@ -30,12 +32,12 @@ flirt_import, itk_import""",
         },
     ),
     (
-        "output",
-        Path,
+        "out_file",
+        str,
         {
             "argstr": "",
-            "position": 2,
-            "output_file_template": "output.txt",
+            "position": 5,
+            "output_file_template": "out_file.txt",
             "help_string": """the output transformation matrix.""",
         },
     ),
@@ -104,28 +106,56 @@ flirt_import, itk_import""",
             "help_string": """display version information and exit.""",
         },
     ),
+    (
+        "epi_image",
+        str,
+        {
+            "argstr": " ",
+            "position": -2,
+            "help_string": """first the image that was provided to flirt via the -in option""",
+        },
+    ),
+    (
+        "flirt_in",
+        str,
+        {
+            "argstr": " ",
+            "position": 1,
+            "help_string": """first the image that was provided to flirt via the -in option""",
+        },
+    ),
+    (
+        "flirt_ref",
+        str,
+        {
+            "argstr": " ",
+            "position": 2,
+            "help_string": """second the image that was provided to flirt via the -ref option
+""",
+        },
+    ),
 ]
 
-transformconvert_input_spec = specs.SpecInfo(
-    name="transformconvert_input", fields=input_fields, bases=(specs.ShellSpec,)
+TransformConvertInputSpec = specs.SpecInfo(
+    name="TransformConvertInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         File,
         {
             "help_string": """the output transformation matrix.""",
         },
     ),
 ]
-transformconvert_output_spec = specs.SpecInfo(
-    name="transformconvert_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TransformConvertOutputSpec = specs.SpecInfo(
+    name="TransformConvertOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class transformconvert(ShellCommandTask):
+class TransformConvert(ShellCommandTask):
     """This command allows to convert transformation matrices provided by other registration softwares to a format usable in MRtrix3. Example usages are provided below.
 
 
@@ -155,11 +185,11 @@ class transformconvert(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -176,5 +206,5 @@ class transformconvert(ShellCommandTask):
     """
 
     executable = "transformconvert"
-    input_spec = transformconvert_input_spec
-    output_spec = transformconvert_output_spec
+    input_spec = TransformConvertInputSpec
+    output_spec = TransformConvertOutputSpec

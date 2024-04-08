@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -9,7 +11,7 @@ input_fields = [
     # Arguments
     (
         "dwi",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 0,
@@ -29,7 +31,7 @@ input_fields = [
     ),
     (
         "mask",
-        ImageIn,
+        File,
         {
             "argstr": "-mask",
             "help_string": """Only process voxels within the specified binary brain mask image.""",
@@ -151,15 +153,15 @@ input_fields = [
     ),
 ]
 
-dwidenoise_input_spec = specs.SpecInfo(
-    name="dwidenoise_input", fields=input_fields, bases=(specs.ShellSpec,)
+DwiDenoiseInputSpec = specs.SpecInfo(
+    name="DwiDenoiseInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
         "out",
-        ImageOut,
+        File,
         {
             "help_string": """the output denoised DWI image.""",
         },
@@ -179,12 +181,12 @@ output_fields = [
         },
     ),
 ]
-dwidenoise_output_spec = specs.SpecInfo(
-    name="dwidenoise_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+DwiDenoiseOutputSpec = specs.SpecInfo(
+    name="DwiDenoiseOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dwidenoise(ShellCommandTask):
+class DwiDenoise(ShellCommandTask):
     """DWI data denoising and noise map estimation by exploiting data redundancy in the PCA domain using the prior knowledge that the eigenspectrum of random covariance matrices is described by the universal Marchenko-Pastur (MP) distribution. Fitting the MP distribution to the spectrum of patch-wise signal matrices hence provides an estimator of the noise level 'sigma', as was first shown in Veraart et al. (2016) and later improved in Cordero-Grande et al. (2019). This noise level estimate then determines the optimal cut-off for PCA denoising.
 
         Important note: image denoising must be performed as the first step of the image processing pipeline. The routine will fail if interpolation or smoothing has been applied to the data prior to denoising.
@@ -207,7 +209,7 @@ class dwidenoise(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Daan Christiaens (daan.christiaens@kcl.ac.uk) & Jelle Veraart (jelle.veraart@nyumc.org) & J-Donald Tournier (jdtournier@gmail.com)
 
@@ -229,5 +231,5 @@ class dwidenoise(ShellCommandTask):
     """
 
     executable = "dwidenoise"
-    input_spec = dwidenoise_input_spec
-    output_spec = dwidenoise_output_spec
+    input_spec = DwiDenoiseInputSpec
+    output_spec = DwiDenoiseOutputSpec

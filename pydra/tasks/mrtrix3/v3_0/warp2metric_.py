@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -112,8 +114,8 @@ input_fields = [
     ),
 ]
 
-warp2metric_input_spec = specs.SpecInfo(
-    name="warp2metric_input", fields=input_fields, bases=(specs.ShellSpec,)
+Warp2MetricInputSpec = specs.SpecInfo(
+    name="Warp2MetricInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -133,12 +135,12 @@ output_fields = [
         },
     ),
 ]
-warp2metric_output_spec = specs.SpecInfo(
-    name="warp2metric_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Warp2MetricOutputSpec = specs.SpecInfo(
+    name="Warp2MetricOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class warp2metric(ShellCommandTask):
+class Warp2Metric(ShellCommandTask):
     """Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
     https://mrtrix.readthedocs.io/en/3.0.4/fixel_based_analysis/fixel_directory_format.html
 
@@ -154,11 +156,11 @@ class warp2metric(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -175,5 +177,5 @@ class warp2metric(ShellCommandTask):
     """
 
     executable = "warp2metric"
-    input_spec = warp2metric_input_spec
-    output_spec = warp2metric_output_spec
+    input_spec = Warp2MetricInputSpec
+    output_spec = Warp2MetricOutputSpec

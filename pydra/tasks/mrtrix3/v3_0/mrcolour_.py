@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -40,12 +42,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image""",
         },
     ),
@@ -141,26 +143,26 @@ input_fields = [
     ),
 ]
 
-mrcolour_input_spec = specs.SpecInfo(
-    name="mrcolour_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrColourInputSpec = specs.SpecInfo(
+    name="MrColourInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image""",
         },
     ),
 ]
-mrcolour_output_spec = specs.SpecInfo(
-    name="mrcolour_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrColourOutputSpec = specs.SpecInfo(
+    name="MrColourOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrcolour(ShellCommandTask):
+class MrColour(ShellCommandTask):
     """Under typical usage, this command will receive as input ad 3D greyscale image, and output a 4D image with 3 volumes corresponding to red-green-blue components; other use cases are possible, and are described in more detail below.
 
         By default, the command will automatically determine the maximum and minimum intensities of the input image, and use that information to set the upper and lower bounds of the applied colourmap. This behaviour can be overridden by manually specifying these bounds using the -upper and -lower options respectively.
@@ -175,11 +177,11 @@ class mrcolour(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -196,5 +198,5 @@ class mrcolour(ShellCommandTask):
     """
 
     executable = "mrcolour"
-    input_spec = mrcolour_input_spec
-    output_spec = mrcolour_output_spec
+    input_spec = MrColourInputSpec
+    output_spec = MrColourOutputSpec

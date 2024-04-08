@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,8 +10,8 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
-        File,  #specs.MultiInputObj[ImageIn],
+        "in_file",
+        File,
         {
             "argstr": "",
             "position": 0,
@@ -43,12 +45,12 @@ input_fields = [
         },
     ),
     (
-        "output",
-        str,
+        "out_file",
+        Path,
         {
             "argstr": "",
             "position": 2,
-            # "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
@@ -186,26 +188,26 @@ input_fields = [
     ),
 ]
 
-mrmath_input_spec = specs.SpecInfo(
-    name="mrmath_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrMathInputSpec = specs.SpecInfo(
+    name="MrMathInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
-        str,
+        "out_file",
+        File,
         {
             "help_string": """the output image.""",
         },
     ),
 ]
-mrmath_output_spec = specs.SpecInfo(
-    name="mrmath_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrMathOutputSpec = specs.SpecInfo(
+    name="MrMathOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrmath(ShellCommandTask):
+class MrMath(ShellCommandTask):
     """Supported operations are:
 
         mean, median, sum, product, rms (root-mean-square value), norm (vector 2-norm), var (unbiased variance), std (unbiased standard deviation), min, max, absmax (maximum absolute value), magmax (value with maximum absolute value, preserving its sign).
@@ -240,11 +242,11 @@ class mrmath(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -261,5 +263,5 @@ class mrmath(ShellCommandTask):
     """
 
     executable = "mrmath"
-    input_spec = mrmath_input_spec
-    output_spec = mrmath_output_spec
+    input_spec = MrMathInputSpec
+    output_spec = MrMathOutputSpec

@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -28,12 +30,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
@@ -163,26 +165,26 @@ input_fields = [
     ),
 ]
 
-mrcat_input_spec = specs.SpecInfo(
-    name="mrcat_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrCatInputSpec = specs.SpecInfo(
+    name="MrCatInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image.""",
         },
     ),
 ]
-mrcat_output_spec = specs.SpecInfo(
-    name="mrcat_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrCatOutputSpec = specs.SpecInfo(
+    name="MrCatOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrcat(ShellCommandTask):
+class MrCat(ShellCommandTask):
     """
         Example usages
         --------------
@@ -204,11 +206,11 @@ class mrcat(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -225,5 +227,5 @@ class mrcat(ShellCommandTask):
     """
 
     executable = "mrcat"
-    input_spec = mrcat_input_spec
-    output_spec = mrcat_output_spec
+    input_spec = MrCatInputSpec
+    output_spec = MrCatOutputSpec

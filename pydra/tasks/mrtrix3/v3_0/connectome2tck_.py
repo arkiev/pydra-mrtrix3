@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -172,18 +174,18 @@ input_fields = [
     ),
 ]
 
-connectome2tck_input_spec = specs.SpecInfo(
-    name="connectome2tck_input", fields=input_fields, bases=(specs.ShellSpec,)
+Connectome2TckInputSpec = specs.SpecInfo(
+    name="Connectome2TckInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-connectome2tck_output_spec = specs.SpecInfo(
-    name="connectome2tck_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Connectome2TckOutputSpec = specs.SpecInfo(
+    name="Connectome2TckOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class connectome2tck(ShellCommandTask):
+class Connectome2Tck(ShellCommandTask):
     """The compulsory input file "assignments_in" should contain a text file where there is one row for each streamline, and each row contains a list of numbers corresponding to the parcels to which that streamline was assigned (most typically there will be two entries per streamline, one for each endpoint; but this is not strictly a requirement). This file will most typically be generated using the tck2connectome command with the -out_assignments option.
 
 
@@ -242,11 +244,11 @@ class connectome2tck(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -263,5 +265,5 @@ class connectome2tck(ShellCommandTask):
     """
 
     executable = "connectome2tck"
-    input_spec = connectome2tck_input_spec
-    output_spec = connectome2tck_output_spec
+    input_spec = Connectome2TckInputSpec
+    output_spec = Connectome2TckOutputSpec

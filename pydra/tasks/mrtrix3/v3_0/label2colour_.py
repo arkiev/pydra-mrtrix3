@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -102,8 +104,8 @@ input_fields = [
     ),
 ]
 
-label2colour_input_spec = specs.SpecInfo(
-    name="label2colour_input", fields=input_fields, bases=(specs.ShellSpec,)
+Label2ColourInputSpec = specs.SpecInfo(
+    name="Label2ColourInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -116,12 +118,12 @@ output_fields = [
         },
     ),
 ]
-label2colour_output_spec = specs.SpecInfo(
-    name="label2colour_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Label2ColourOutputSpec = specs.SpecInfo(
+    name="Label2ColourOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class label2colour(ShellCommandTask):
+class Label2Colour(ShellCommandTask):
     """Many software packages handle this colouring internally within their viewer program; this binary explicitly converts a parcellation image into a colour image that should be viewable in any software.
 
 
@@ -134,11 +136,11 @@ class label2colour(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -155,5 +157,5 @@ class label2colour(ShellCommandTask):
     """
 
     executable = "label2colour"
-    input_spec = label2colour_input_spec
-    output_spec = label2colour_output_spec
+    input_spec = Label2ColourInputSpec
+    output_spec = Label2ColourOutputSpec

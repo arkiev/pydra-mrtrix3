@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -20,7 +22,7 @@ input_fields = [
     ),
     (
         "dwi",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 1,
@@ -28,16 +30,79 @@ input_fields = [
             "mandatory": True,
         },
     ),
+    # (
+    #     "response_odf",
+    #     specs.MultiInputObj[ty.Any],
+    #     {
+    #         "argstr": "",
+    #         "position": 2,
+    #         "help_string": """pairs of input tissue response and output ODF images""",
+    #         "mandatory": True,
+    #     },
+    # ),
     (
-        "response_odf",
-        specs.MultiInputObj[ty.Any],
+        "response_wm",
+        File,
         {
             "argstr": "",
             "position": 2,
-            "help_string": """pairs of input tissue response and output ODF images""",
+            "help_string": "WM response function",
+            "mandatory": True,
+            
+        },
+    ),
+    (
+        "fod_wm",
+        Path,
+        {
+            "argstr": "",
+            "position": 3,
+            "help_string": "WM FOD",
+            "output_file_template": "wm_FOD.mif",
+
+        },
+    ),
+    (
+        "response_gm",
+        File,
+        {
+            "argstr": "",
+            "position": 4,
+            "help_string": "GM response function",
             "mandatory": True,
         },
     ),
+    (
+        "fod_gm",
+        Path,
+        {
+            "argstr": "",
+            "position": 5,
+            "help_string": "GM FOD",
+            "output_file_template": "gm_FOD.mif",
+        },
+    ),
+(
+        "response_csf",
+        File,
+        {
+            "argstr": "",
+            "position": 6,
+            "help_string": "CSF response function",
+            "mandatory": True,
+        },
+    ),
+    (
+        "fod_csf",
+        Path,
+        {
+            "argstr": "",
+            "position": 7,
+            "help_string": "CSF FOD",
+            "output_file_template": "csf_FOD.mif",
+        },
+    ),
+
     # DW gradient table import options Option Group
     (
         "grad",
@@ -86,7 +151,7 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
     (
         "mask",
-        ImageIn,
+        File,
         {
             "argstr": "-mask",
             "help_string": """only perform computation within the specified binary brain mask image.""",
@@ -236,26 +301,51 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
 ]
 
-dwi2fod_input_spec = specs.SpecInfo(
-    name="dwi2fod_input", fields=input_fields, bases=(specs.ShellSpec,)
+Dwi2FodInputSpec = specs.SpecInfo(
+    name="Dwi2FodInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "predicted_signal",
-        ImageOut,
+        "fod_wm",
+        Path,
         {
-            "help_string": """output the predicted dwi image.""",
+            "argstr": "",
+            "position": 3,
+            "help_string": "WM FOD",
+            "output_file_template": "wm_FOD.mif",
+
+        },
+    ),
+    (
+        "fod_gm",
+        Path,
+        {
+            "argstr": "",
+            "position": 5,
+            "help_string": "GM FOD",
+            "output_file_template": "gm_FOD.mif",
+        },
+    ),
+
+    (
+        "fod_csf",
+        Path,
+        {
+            "argstr": "",
+            "position": 7,
+            "help_string": "CSF FOD",
+            "output_file_template": "csf_FOD.mif",
         },
     ),
 ]
-dwi2fod_output_spec = specs.SpecInfo(
-    name="dwi2fod_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Dwi2FodOutputSpec = specs.SpecInfo(
+    name="Dwi2FodOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dwi2fod(ShellCommandTask):
+class Dwi2Fod(ShellCommandTask):
     """The spherical harmonic coefficients are stored according to the conventions described in the main documentation, which can be found at the following link:
     https://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html
 
@@ -295,11 +385,11 @@ class dwi2fod(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com) and Ben Jeurissen (ben.jeurissen@uantwerpen.be)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -316,5 +406,5 @@ class dwi2fod(ShellCommandTask):
     """
 
     executable = "dwi2fod"
-    input_spec = dwi2fod_input_spec
-    output_spec = dwi2fod_output_spec
+    input_spec = Dwi2FodInputSpec
+    output_spec = Dwi2FodOutputSpec

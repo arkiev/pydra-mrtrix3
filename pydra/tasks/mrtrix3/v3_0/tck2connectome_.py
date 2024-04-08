@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "tracks_in",
+        "in_tracks",
         Tracks,
         {
             "argstr": "",
@@ -19,7 +21,7 @@ input_fields = [
     ),
     (
         "nodes_in",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 1,
@@ -105,7 +107,7 @@ input_fields = [
     ),
     (
         "scale_file",
-        ImageIn,
+        File,
         {
             "argstr": "-scale_file",
             "help_string": """scale each contribution to the connectome edge according to the values in a vector file""",
@@ -239,8 +241,8 @@ input_fields = [
     ),
 ]
 
-tck2connectome_input_spec = specs.SpecInfo(
-    name="tck2connectome_input", fields=input_fields, bases=(specs.ShellSpec,)
+Tck2ConnectomeInputSpec = specs.SpecInfo(
+    name="Tck2ConnectomeInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -260,12 +262,12 @@ output_fields = [
         },
     ),
 ]
-tck2connectome_output_spec = specs.SpecInfo(
-    name="tck2connectome_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Tck2ConnectomeOutputSpec = specs.SpecInfo(
+    name="Tck2ConnectomeOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tck2connectome(ShellCommandTask):
+class Tck2Connectome(ShellCommandTask):
     """
         Example usages
         --------------
@@ -312,11 +314,11 @@ class tck2connectome(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -333,5 +335,5 @@ class tck2connectome(ShellCommandTask):
     """
 
     executable = "tck2connectome"
-    input_spec = tck2connectome_input_spec
-    output_spec = tck2connectome_output_spec
+    input_spec = Tck2ConnectomeInputSpec
+    output_spec = Tck2ConnectomeOutputSpec

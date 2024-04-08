@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         File,
         {
             "argstr": "",
@@ -289,18 +291,18 @@ input_fields = [
     ),
 ]
 
-mrclusterstats_input_spec = specs.SpecInfo(
-    name="mrclusterstats_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrClusterstatsInputSpec = specs.SpecInfo(
+    name="MrClusterstatsInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-mrclusterstats_output_spec = specs.SpecInfo(
-    name="mrclusterstats_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrClusterstatsOutputSpec = specs.SpecInfo(
+    name="MrClusterstatsOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrclusterstats(ShellCommandTask):
+class MrClusterstats(ShellCommandTask):
     """In some software packages, a column of ones is automatically added to the GLM design matrix; the purpose of this column is to estimate the "global intercept", which is the predicted value of the observed variable if all explanatory variables were to be zero. However there are rare situations where including such a column would not be appropriate for a particular experimental design. Hence, in MRtrix3 statistical inference commands, it is up to the user to determine whether or not this column of ones should be included in their design matrix, and add it explicitly if necessary. The contrast matrix must also reflect the presence of this additional column.
 
 
@@ -319,11 +321,11 @@ class mrclusterstats(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -340,5 +342,5 @@ class mrclusterstats(ShellCommandTask):
     """
 
     executable = "mrclusterstats"
-    input_spec = mrclusterstats_input_spec
-    output_spec = mrclusterstats_output_spec
+    input_spec = MrClusterstatsInputSpec
+    output_spec = MrClusterstatsOutputSpec

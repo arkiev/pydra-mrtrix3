@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -104,8 +106,8 @@ input_fields = [
     ),
 ]
 
-fixelreorient_input_spec = specs.SpecInfo(
-    name="fixelreorient_input", fields=input_fields, bases=(specs.ShellSpec,)
+FixelReorientInputSpec = specs.SpecInfo(
+    name="FixelReorientInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -118,12 +120,12 @@ output_fields = [
         },
     ),
 ]
-fixelreorient_output_spec = specs.SpecInfo(
-    name="fixelreorient_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+FixelReorientOutputSpec = specs.SpecInfo(
+    name="FixelReorientOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fixelreorient(ShellCommandTask):
+class FixelReorient(ShellCommandTask):
     """Reorientation is performed by transforming the vector representing the fixel direction with the Jacobian (local affine transform) computed at each voxel in the warp, then re-normalising the vector.
 
         Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
@@ -139,11 +141,11 @@ class fixelreorient(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -160,5 +162,5 @@ class fixelreorient(ShellCommandTask):
     """
 
     executable = "fixelreorient"
-    input_spec = fixelreorient_input_spec
-    output_spec = fixelreorient_output_spec
+    input_spec = FixelReorientInputSpec
+    output_spec = FixelReorientOutputSpec

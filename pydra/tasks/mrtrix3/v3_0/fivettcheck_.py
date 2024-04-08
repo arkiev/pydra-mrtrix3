@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         specs.MultiInputObj[ImageIn],
         {
             "argstr": "",
@@ -92,18 +94,18 @@ input_fields = [
     ),
 ]
 
-fivettcheck_input_spec = specs.SpecInfo(
-    name="fivettcheck_input", fields=input_fields, bases=(specs.ShellSpec,)
+FivettCheckInputSpec = specs.SpecInfo(
+    name="FivettCheckInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-fivettcheck_output_spec = specs.SpecInfo(
-    name="fivettcheck_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+FivettCheckOutputSpec = specs.SpecInfo(
+    name="FivettCheckOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fivettcheck(ShellCommandTask):
+class FivettCheck(ShellCommandTask):
     """
         References
         ----------
@@ -114,11 +116,11 @@ class fivettcheck(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -135,5 +137,5 @@ class fivettcheck(ShellCommandTask):
     """
 
     executable = "5ttcheck"
-    input_spec = fivettcheck_input_spec
-    output_spec = fivettcheck_output_spec
+    input_spec = FivettCheckInputSpec
+    output_spec = FivettCheckOutputSpec

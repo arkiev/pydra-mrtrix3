@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.txt",
+            "output_file_template": "out_file.txt",
             "help_string": """the output track file.""",
         },
     ),
@@ -170,26 +172,26 @@ input_fields = [
     ),
 ]
 
-tckconvert_input_spec = specs.SpecInfo(
-    name="tckconvert_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckConvertInputSpec = specs.SpecInfo(
+    name="TckConvertInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         File,
         {
             "help_string": """the output track file.""",
         },
     ),
 ]
-tckconvert_output_spec = specs.SpecInfo(
-    name="tckconvert_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckConvertOutputSpec = specs.SpecInfo(
+    name="TckConvertOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tckconvert(ShellCommandTask):
+class TckConvert(ShellCommandTask):
     """The program currently supports MRtrix .tck files (input/output), ascii text files (input/output), VTK polydata files (input/output), and RenderMan RIB (export only).
 
         Note that ascii files will be stored with one streamline per numbered file. To support this, the command will use the multi-file numbering syntax, where square brackets denote the position of the numbering for the files, for example:
@@ -208,11 +210,11 @@ class tckconvert(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Daan Christiaens (daan.christiaens@kcl.ac.uk), J-Donald Tournier (jdtournier@gmail.com), Philip Broser (philip.broser@me.com), Daniel Blezek (daniel.blezek@gmail.com).
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -229,5 +231,5 @@ class tckconvert(ShellCommandTask):
     """
 
     executable = "tckconvert"
-    input_spec = tckconvert_input_spec
-    output_spec = tckconvert_output_spec
+    input_spec = TckConvertInputSpec
+    output_spec = TckConvertOutputSpec

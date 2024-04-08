@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -135,8 +137,8 @@ input_fields = [
     ),
 ]
 
-warpconvert_input_spec = specs.SpecInfo(
-    name="warpconvert_input", fields=input_fields, bases=(specs.ShellSpec,)
+WarpConvertInputSpec = specs.SpecInfo(
+    name="WarpConvertInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -149,12 +151,12 @@ output_fields = [
         },
     ),
 ]
-warpconvert_output_spec = specs.SpecInfo(
-    name="warpconvert_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+WarpConvertOutputSpec = specs.SpecInfo(
+    name="WarpConvertOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class warpconvert(ShellCommandTask):
+class WarpConvert(ShellCommandTask):
     """A deformation field is defined as an image where each voxel defines the corresponding position in the other image (in scanner space coordinates). A displacement field stores the displacements (in mm) to the other image from the each voxel's position (in scanner space). The warpfull file is the 5D format output from mrregister -nl_warp_full, which contains linear transforms, warps and their inverses that map each image to a midway space.
 
 
@@ -167,11 +169,11 @@ class warpconvert(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -188,5 +190,5 @@ class warpconvert(ShellCommandTask):
     """
 
     executable = "warpconvert"
-    input_spec = warpconvert_input_spec
-    output_spec = warpconvert_output_spec
+    input_spec = WarpConvertInputSpec
+    output_spec = WarpConvertOutputSpec

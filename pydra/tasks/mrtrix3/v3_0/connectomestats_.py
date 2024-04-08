@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         File,
         {
             "argstr": "",
@@ -282,18 +284,18 @@ input_fields = [
     ),
 ]
 
-connectomestats_input_spec = specs.SpecInfo(
-    name="connectomestats_input", fields=input_fields, bases=(specs.ShellSpec,)
+ConnectomeStatsInputSpec = specs.SpecInfo(
+    name="ConnectomeStatsInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-connectomestats_output_spec = specs.SpecInfo(
-    name="connectomestats_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+ConnectomeStatsOutputSpec = specs.SpecInfo(
+    name="ConnectomeStatsOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class connectomestats(ShellCommandTask):
+class ConnectomeStats(ShellCommandTask):
     """For the TFNBS algorithm, default parameters for statistical enhancement have been set based on the work in:
     Vinokur, L.; Zalesky, A.; Raffelt, D.; Smith, R.E. & Connelly, A. A Novel Threshold-Free Network-Based Statistics Method: Demonstration using Simulated Pathology. OHBM, 2015, 4144;
     and:
@@ -323,11 +325,11 @@ class connectomestats(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -344,5 +346,5 @@ class connectomestats(ShellCommandTask):
     """
 
     executable = "connectomestats"
-    input_spec = connectomestats_input_spec
-    output_spec = connectomestats_output_spec
+    input_spec = ConnectomeStatsInputSpec
+    output_spec = ConnectomeStatsOutputSpec

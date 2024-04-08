@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -163,8 +165,8 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
 ]
 
-amp2sh_input_spec = specs.SpecInfo(
-    name="amp2sh_input", fields=input_fields, bases=(specs.ShellSpec,)
+Amp2ShInputSpec = specs.SpecInfo(
+    name="Amp2ShInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -177,12 +179,12 @@ output_fields = [
         },
     ),
 ]
-amp2sh_output_spec = specs.SpecInfo(
-    name="amp2sh_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Amp2ShOutputSpec = specs.SpecInfo(
+    name="Amp2ShOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class amp2sh(ShellCommandTask):
+class Amp2Sh(ShellCommandTask):
     """The spherical harmonic decomposition is calculated by least-squares linear fitting to the amplitude data.
 
         The directions can be defined either as a DW gradient scheme (for example to compute the SH representation of the DW signal), a set of [az el] pairs as output by the dirgen command, or a set of [ x y z ] directions in Cartesian coordinates. The DW gradient scheme or direction set can be supplied within the input image header or using the -gradient or -directions option. Note that if a direction set and DW gradient scheme can be found, the direction set will be used by default.
@@ -200,11 +202,11 @@ class amp2sh(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -221,5 +223,5 @@ class amp2sh(ShellCommandTask):
     """
 
     executable = "amp2sh"
-    input_spec = amp2sh_input_spec
-    output_spec = amp2sh_output_spec
+    input_spec = Amp2ShInputSpec
+    output_spec = Amp2ShOutputSpec

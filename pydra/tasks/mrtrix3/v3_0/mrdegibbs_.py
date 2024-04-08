@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -9,7 +11,7 @@ input_fields = [
     # Arguments
     (
         "in_",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 0,
@@ -187,26 +189,29 @@ input_fields = [
     ),
 ]
 
-mrdegibbs_input_spec = specs.SpecInfo(
-    name="mrdegibbs_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrDegibbsInputSpec = specs.SpecInfo(
+    name="MrDegibbsInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
         "out",
-        ImageOut,
+        Path,
         {
+            "argstr": "",
+            "position": 1,
+            "output_file_template": "out.mif",
             "help_string": """the output image.""",
         },
     ),
 ]
-mrdegibbs_output_spec = specs.SpecInfo(
-    name="mrdegibbs_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrDegibbsOutputSpec = specs.SpecInfo(
+    name="MrDegibbsOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrdegibbs(ShellCommandTask):
+class MrDegibbs(ShellCommandTask):
     """This application attempts to remove Gibbs ringing artefacts from MRI images using the method of local subvoxel-shifts proposed by Kellner et al. (see reference below for details). By default, the original 2D slice-wise version is used. If the -mode 3d option is provided, the program will run the 3D version as proposed by Bautista et al. (also in the reference list below).
 
         This command is designed to run on data directly after it has been reconstructed by the scanner, before any interpolation of any kind has taken place. You should not run this command after any form of motion correction (e.g. not after dwifslpreproc). Similarly, if you intend running dwidenoise, you should run denoising before this command to not alter the noise structure, which would impact on dwidenoise's performance.
@@ -227,11 +232,11 @@ class mrdegibbs(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Ben Jeurissen (ben.jeurissen@uantwerpen.be) & J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -248,5 +253,5 @@ class mrdegibbs(ShellCommandTask):
     """
 
     executable = "mrdegibbs"
-    input_spec = mrdegibbs_input_spec
-    output_spec = mrdegibbs_output_spec
+    input_spec = MrDegibbsInputSpec
+    output_spec = MrDegibbsOutputSpec

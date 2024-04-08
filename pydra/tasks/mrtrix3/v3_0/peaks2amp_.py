@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -94,8 +96,8 @@ input_fields = [
     ),
 ]
 
-peaks2amp_input_spec = specs.SpecInfo(
-    name="peaks2amp_input", fields=input_fields, bases=(specs.ShellSpec,)
+Peaks2AmpInputSpec = specs.SpecInfo(
+    name="Peaks2AmpInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -108,12 +110,12 @@ output_fields = [
         },
     ),
 ]
-peaks2amp_output_spec = specs.SpecInfo(
-    name="peaks2amp_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Peaks2AmpOutputSpec = specs.SpecInfo(
+    name="Peaks2AmpOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class peaks2amp(ShellCommandTask):
+class Peaks2Amp(ShellCommandTask):
     """
         References
         ----------
@@ -124,11 +126,11 @@ class peaks2amp(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -145,5 +147,5 @@ class peaks2amp(ShellCommandTask):
     """
 
     executable = "peaks2amp"
-    input_spec = peaks2amp_input_spec
-    output_spec = peaks2amp_output_spec
+    input_spec = Peaks2AmpInputSpec
+    output_spec = Peaks2AmpOutputSpec

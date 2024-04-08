@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -306,18 +308,18 @@ input_fields = [
     ),
 ]
 
-fixelcfestats_input_spec = specs.SpecInfo(
-    name="fixelcfestats_input", fields=input_fields, bases=(specs.ShellSpec,)
+FixelCfestatsInputSpec = specs.SpecInfo(
+    name="FixelCfestatsInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-fixelcfestats_output_spec = specs.SpecInfo(
-    name="fixelcfestats_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+FixelCfestatsOutputSpec = specs.SpecInfo(
+    name="FixelCfestatsOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fixelcfestats(ShellCommandTask):
+class FixelCfestats(ShellCommandTask):
     """Unlike previous versions of this command, where a whole-brain tractogram file would be provided as input in order to generate the fixel-fixel connectivity matrix and smooth fixel data, this version expects to be provided with the directory path to a pre-calculated fixel-fixel connectivity matrix (likely generated using the MRtrix3 command fixelconnectivity), and for the input fixel data to have already been smoothed (likely using the MRtrix3 command fixelfilter).
 
         Note that if the -mask option is used, the output fixel directory will still contain the same set of fixels as that present in the input fixel template, in order to retain fixel correspondence. However a consequence of this is that all fixels in the template will be initialy visible when the output fixel directory is loaded in mrview. Those fixels outside the processing mask will immediately disappear from view as soon as any data-file-based fixel colouring or thresholding is applied.
@@ -345,11 +347,11 @@ class fixelcfestats(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -366,5 +368,5 @@ class fixelcfestats(ShellCommandTask):
     """
 
     executable = "fixelcfestats"
-    input_spec = fixelcfestats_input_spec
-    output_spec = fixelcfestats_output_spec
+    input_spec = FixelCfestatsInputSpec
+    output_spec = FixelCfestatsOutputSpec

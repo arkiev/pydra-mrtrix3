@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -184,8 +186,8 @@ none (default).""",
         str,
         {
             "argstr": "-rigid_metric.diff.estimator",
-            "help_string": """Valid choices are: l1 (least absolute: |x|), l2 (ordinary least squares), lp (least powers: |x|^1.2), Default: l2""",
-            "allowed_values": ["l1", "l1", "l2", "lp"],
+            "help_string": """Valid choices are: l1 (least absolute: |x|), l2 (ordinary least squares), lp (least powers: |x|^1.2), none (no robust estimator). Default: l2""",
+            "allowed_values": ["l1", "l1", "l2", "lp", "none"],
         },
     ),
     (
@@ -303,7 +305,7 @@ none (Default: none).""",
         {
             "argstr": "-affine_metric.diff.estimator",
             "help_string": """Valid choices are: l1 (least absolute: |x|), l2 (ordinary least squares), lp (least powers: |x|^1.2), Default: l2""",
-            "allowed_values": ["l1", "l1", "l2", "lp"],
+            "allowed_values": ["l1", "l1", "l2", "lp", "none"],
         },
     ),
     (
@@ -680,8 +682,8 @@ none (Default: none).""",
     ),
 ]
 
-mrregister_input_spec = specs.SpecInfo(
-    name="mrregister_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrRegisterInputSpec = specs.SpecInfo(
+    name="MrRegisterInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -771,12 +773,12 @@ output_fields = [
         },
     ),
 ]
-mrregister_output_spec = specs.SpecInfo(
-    name="mrregister_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrRegisterOutputSpec = specs.SpecInfo(
+    name="MrRegisterOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrregister(ShellCommandTask):
+class MrRegister(ShellCommandTask):
     """By default this application will perform an affine, followed by non-linear registration.
 
         FOD registration (with apodised point spread reorientation) will be performed by default if the number of volumes in the 4th dimension equals the number of coefficients in an antipodally symmetric spherical harmonic series (e.g. 6, 15, 28 etc). The -no_reorientation option can be used to force reorientation off if required.
@@ -798,11 +800,11 @@ class mrregister(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) & Max Pietsch (maximilian.pietsch@kcl.ac.uk)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -819,5 +821,5 @@ class mrregister(ShellCommandTask):
     """
 
     executable = "mrregister"
-    input_spec = mrregister_input_spec
-    output_spec = mrregister_output_spec
+    input_spec = MrRegisterInputSpec
+    output_spec = MrRegisterOutputSpec

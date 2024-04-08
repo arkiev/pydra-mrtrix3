@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -191,8 +193,8 @@ input_fields = [
     ),
 ]
 
-fod2fixel_input_spec = specs.SpecInfo(
-    name="fod2fixel_input", fields=input_fields, bases=(specs.ShellSpec,)
+Fod2FixelInputSpec = specs.SpecInfo(
+    name="Fod2FixelInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -226,12 +228,12 @@ output_fields = [
         },
     ),
 ]
-fod2fixel_output_spec = specs.SpecInfo(
-    name="fod2fixel_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Fod2FixelOutputSpec = specs.SpecInfo(
+    name="Fod2FixelOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fod2fixel(ShellCommandTask):
+class Fod2Fixel(ShellCommandTask):
     """Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
     https://mrtrix.readthedocs.io/en/3.0.4/fixel_based_analysis/fixel_directory_format.html
 
@@ -251,11 +253,11 @@ class fod2fixel(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -272,5 +274,5 @@ class fod2fixel(ShellCommandTask):
     """
 
     executable = "fod2fixel"
-    input_spec = fod2fixel_input_spec
-    output_spec = fod2fixel_output_spec
+    input_spec = Fod2FixelInputSpec
+    output_spec = Fod2FixelOutputSpec

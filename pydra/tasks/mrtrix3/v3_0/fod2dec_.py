@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """The output DEC image (weighted RGB triplets).""",
         },
     ),
@@ -154,26 +156,26 @@ Note: this implicitly switches on luminance/perception correction, using a defau
     ),
 ]
 
-fod2dec_input_spec = specs.SpecInfo(
-    name="fod2dec_input", fields=input_fields, bases=(specs.ShellSpec,)
+Fod2DecInputSpec = specs.SpecInfo(
+    name="Fod2DecInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """The output DEC image (weighted RGB triplets).""",
         },
     ),
 ]
-fod2dec_output_spec = specs.SpecInfo(
-    name="fod2dec_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Fod2DecOutputSpec = specs.SpecInfo(
+    name="Fod2DecOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fod2dec(ShellCommandTask):
+class Fod2Dec(ShellCommandTask):
     """By default, the FOD-based DEC is weighted by the integral of the FOD. To weight by another scalar map, use the -contrast option. This option can also be used for panchromatic sharpening, e.g., by supplying a T1 (or other sensible) anatomical volume with a higher spatial resolution.
 
 
@@ -190,7 +192,7 @@ class fod2dec(ShellCommandTask):
     MRtrix
     ------
 
-        Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+        Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
         Author: Thijs Dhollander (thijs.dhollander@gmail.com)
 
@@ -198,5 +200,5 @@ class fod2dec(ShellCommandTask):
     """
 
     executable = "fod2dec"
-    input_spec = fod2dec_input_spec
-    output_spec = fod2dec_output_spec
+    input_spec = Fod2DecInputSpec
+    output_spec = Fod2DecOutputSpec

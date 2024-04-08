@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -158,8 +160,8 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
 ]
 
-amp2response_input_spec = specs.SpecInfo(
-    name="amp2response_input", fields=input_fields, bases=(specs.ShellSpec,)
+Amp2ResponseInputSpec = specs.SpecInfo(
+    name="Amp2ResponseInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -172,12 +174,12 @@ output_fields = [
         },
     ),
 ]
-amp2response_output_spec = specs.SpecInfo(
-    name="amp2response_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Amp2ResponseOutputSpec = specs.SpecInfo(
+    name="Amp2ResponseOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class amp2response(ShellCommandTask):
+class Amp2Response(ShellCommandTask):
     """This command uses the image data from all selected single-fibre voxels concurrently, rather than simply averaging their individual spherical harmonic coefficients. It also ensures that the response function is non-negative, and monotonic (i.e. its amplitude must increase from the fibre direction out to the orthogonal plane).
 
         If multi-shell data are provided, and one or more b-value shells are not explicitly requested, the command will generate a response function for every b-value shell (including b=0 if present).
@@ -194,11 +196,11 @@ class amp2response(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -215,5 +217,5 @@ class amp2response(ShellCommandTask):
     """
 
     executable = "amp2response"
-    input_spec = amp2response_input_spec
-    output_spec = amp2response_output_spec
+    input_spec = Amp2ResponseInputSpec
+    output_spec = Amp2ResponseOutputSpec

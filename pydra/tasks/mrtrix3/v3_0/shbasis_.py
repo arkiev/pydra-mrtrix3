@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -93,18 +95,18 @@ input_fields = [
     ),
 ]
 
-shbasis_input_spec = specs.SpecInfo(
-    name="shbasis_input", fields=input_fields, bases=(specs.ShellSpec,)
+ShBasisInputSpec = specs.SpecInfo(
+    name="ShBasisInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-shbasis_output_spec = specs.SpecInfo(
-    name="shbasis_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+ShBasisOutputSpec = specs.SpecInfo(
+    name="ShBasisOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class shbasis(ShellCommandTask):
+class ShBasis(ShellCommandTask):
     """In previous versions of MRtrix, the convention used for storing spherical harmonic coefficients was a non-orthonormal basis (the m!=0 coefficients were a factor of sqrt(2) too large). This error has been rectified in newer versions of MRtrix, but will cause issues if processing SH data that was generated using an older version of MRtrix (or vice-versa).
 
         This command provides a mechanism for testing the basis used in storage of image data representing a spherical harmonic series per voxel, and allows the user to forcibly modify the raw image data to conform to the desired basis.
@@ -124,11 +126,11 @@ class shbasis(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -145,5 +147,5 @@ class shbasis(ShellCommandTask):
     """
 
     executable = "shbasis"
-    input_spec = shbasis_input_spec
-    output_spec = shbasis_output_spec
+    input_spec = ShBasisInputSpec
+    output_spec = ShBasisOutputSpec

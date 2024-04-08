@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.txt",
+            "output_file_template": "out_file.txt",
             "help_string": """the (optional) output text file.""",
         },
     ),
@@ -94,26 +96,26 @@ input_fields = [
     ),
 ]
 
-maskdump_input_spec = specs.SpecInfo(
-    name="maskdump_input", fields=input_fields, bases=(specs.ShellSpec,)
+MaskDumpInputSpec = specs.SpecInfo(
+    name="MaskDumpInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         File,
         {
             "help_string": """the (optional) output text file.""",
         },
     ),
 ]
-maskdump_output_spec = specs.SpecInfo(
-    name="maskdump_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MaskDumpOutputSpec = specs.SpecInfo(
+    name="MaskDumpOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class maskdump(ShellCommandTask):
+class MaskDump(ShellCommandTask):
     """If no destination file is specified, the voxel locations will be printed to stdout.
 
 
@@ -126,11 +128,11 @@ class maskdump(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -147,5 +149,5 @@ class maskdump(ShellCommandTask):
     """
 
     executable = "maskdump"
-    input_spec = maskdump_input_spec
-    output_spec = maskdump_output_spec
+    input_spec = MaskDumpInputSpec
+    output_spec = MaskDumpOutputSpec

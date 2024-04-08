@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -137,8 +139,8 @@ input_fields = [
     ),
 ]
 
-tcksample_input_spec = specs.SpecInfo(
-    name="tcksample_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckSampleInputSpec = specs.SpecInfo(
+    name="TckSampleInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -151,12 +153,12 @@ output_fields = [
         },
     ),
 ]
-tcksample_output_spec = specs.SpecInfo(
-    name="tcksample_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckSampleOutputSpec = specs.SpecInfo(
+    name="TckSampleOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tcksample(ShellCommandTask):
+class TckSample(ShellCommandTask):
     """By default, the value of the underlying image at each point along the track is written to either an ASCII file (with all values for each track on the same line), or a track scalar file (.tsf). Alternatively, some statistic can be taken from the values along each streamline and written to a vector file.
 
 
@@ -171,11 +173,11 @@ class tcksample(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -192,5 +194,5 @@ class tcksample(ShellCommandTask):
     """
 
     executable = "tcksample"
-    input_spec = tcksample_input_spec
-    output_spec = tcksample_output_spec
+    input_spec = TckSampleInputSpec
+    output_spec = TckSampleOutputSpec

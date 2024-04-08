@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -37,12 +39,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
@@ -281,14 +283,14 @@ input_fields = [
     ),
 ]
 
-mrfilter_input_spec = specs.SpecInfo(
-    name="mrfilter_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrFilterInputSpec = specs.SpecInfo(
+    name="MrFilterInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image.""",
@@ -302,12 +304,12 @@ output_fields = [
         },
     ),
 ]
-mrfilter_output_spec = specs.SpecInfo(
-    name="mrfilter_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrFilterOutputSpec = specs.SpecInfo(
+    name="MrFilterOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrfilter(ShellCommandTask):
+class MrFilter(ShellCommandTask):
     """The available filters are: fft, gradient, median, smooth, normalise, zclean.
 
         Each filter has its own unique set of optional parameters.
@@ -324,11 +326,11 @@ class mrfilter(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -345,5 +347,5 @@ class mrfilter(ShellCommandTask):
     """
 
     executable = "mrfilter"
-    input_spec = mrfilter_input_spec
-    output_spec = mrfilter_output_spec
+    input_spec = MrFilterInputSpec
+    output_spec = MrFilterOutputSpec

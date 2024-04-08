@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -151,18 +153,18 @@ input_fields = [
     ),
 ]
 
-tckresample_input_spec = specs.SpecInfo(
-    name="tckresample_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckResampleInputSpec = specs.SpecInfo(
+    name="TckResampleInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-tckresample_output_spec = specs.SpecInfo(
-    name="tckresample_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckResampleOutputSpec = specs.SpecInfo(
+    name="TckResampleOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tckresample(ShellCommandTask):
+class TckResample(ShellCommandTask):
     """It is necessary to specify precisely ONE of the command-line options for controlling how this resampling takes place; this may be either increasing or decreasing the number of samples along each streamline, or may involve changing the positions of the samples according to some specified trajectory.
 
         Note that because the length of a streamline is calculated based on the sums of distances between adjacent vertices, resampling a streamline to a new set of vertices will typically change the quantified length of that streamline; the magnitude of the difference will typically depend on the discrepancy in the number of vertices, with less vertices leading to a shorter length (due to taking chordal lengths of curved trajectories).
@@ -177,11 +179,11 @@ class tckresample(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -198,5 +200,5 @@ class tckresample(ShellCommandTask):
     """
 
     executable = "tckresample"
-    input_spec = tckresample_input_spec
-    output_spec = tckresample_output_spec
+    input_spec = TckResampleInputSpec
+    output_spec = TckResampleOutputSpec

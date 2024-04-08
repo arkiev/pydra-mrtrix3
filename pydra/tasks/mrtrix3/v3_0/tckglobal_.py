@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -289,8 +291,8 @@ If provided, any value of -balance will be ignored.""",
     ),
 ]
 
-tckglobal_input_spec = specs.SpecInfo(
-    name="tckglobal_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckGlobalInputSpec = specs.SpecInfo(
+    name="TckGlobalInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -325,12 +327,12 @@ This fODF is estimated as part of the global track optimization, and therefore i
         },
     ),
 ]
-tckglobal_output_spec = specs.SpecInfo(
-    name="tckglobal_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckGlobalOutputSpec = specs.SpecInfo(
+    name="TckGlobalOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tckglobal(ShellCommandTask):
+class TckGlobal(ShellCommandTask):
     """This command will reconstruct the global white matter fibre tractogram that best explains the input DWI data, using a multi-tissue spherical convolution model.
 
         A more thorough description of the operation of global tractography in MRtrix3 can be found in the online documentation:
@@ -359,7 +361,7 @@ class tckglobal(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Daan Christiaens (daan.christiaens@kcl.ac.uk)
 
@@ -371,5 +373,5 @@ class tckglobal(ShellCommandTask):
     """
 
     executable = "tckglobal"
-    input_spec = tckglobal_input_spec
-    output_spec = tckglobal_output_spec
+    input_spec = TckGlobalInputSpec
+    output_spec = TckGlobalOutputSpec

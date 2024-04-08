@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -102,8 +104,8 @@ input_fields = [
     ),
 ]
 
-fixel2sh_input_spec = specs.SpecInfo(
-    name="fixel2sh_input", fields=input_fields, bases=(specs.ShellSpec,)
+Fixel2ShInputSpec = specs.SpecInfo(
+    name="Fixel2ShInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -116,12 +118,12 @@ output_fields = [
         },
     ),
 ]
-fixel2sh_output_spec = specs.SpecInfo(
-    name="fixel2sh_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Fixel2ShOutputSpec = specs.SpecInfo(
+    name="Fixel2ShOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fixel2sh(ShellCommandTask):
+class Fixel2Sh(ShellCommandTask):
     """This command generates spherical harmonic data from fixels that can be visualised using the ODF tool in MRview. The output ODF lobes are scaled according to the values in the input fixel image.
 
         The spherical harmonic coefficients are stored according to the conventions described in the main documentation, which can be found at the following link:
@@ -140,11 +142,11 @@ class fixel2sh(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au) & David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -161,5 +163,5 @@ class fixel2sh(ShellCommandTask):
     """
 
     executable = "fixel2sh"
-    input_spec = fixel2sh_input_spec
-    output_spec = fixel2sh_output_spec
+    input_spec = Fixel2ShInputSpec
+    output_spec = Fixel2ShOutputSpec

@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -9,7 +11,7 @@ input_fields = [
     # Arguments
     (
         "source",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 0,
@@ -19,12 +21,14 @@ input_fields = [
     ),
     (
         "tracks",
-        Tracks,
+        str,
         {
             "argstr": "",
             "position": 1,
             "help_string": """the output file containing the tracks generated.""",
-            "mandatory": True,
+            "mandatory": False,
+            "output_file_template": "tractogram.tck",
+
         },
     ),
     (
@@ -139,7 +143,7 @@ input_fields = [
     # Tractography seeding mechanisms; at least one must be provided Option Group
     (
         "seed_image",
-        specs.MultiInputObj[ImageIn],
+        File,
         {
             "argstr": "-seed_image",
             "help_string": """seed streamlines entirely at random within a mask image """,
@@ -147,7 +151,7 @@ input_fields = [
     ),
     (
         "seed_sphere",
-        specs.MultiInputObj[ty.List[float]],
+        File,
         {
             "argstr": "-seed_sphere",
             "help_string": """spherical seed as four comma-separated values (XYZ position and radius)""",
@@ -156,7 +160,7 @@ input_fields = [
     ),
     (
         "seed_random_per_voxel",
-        specs.MultiInputObj[ty.Tuple[ImageIn, ImageIn]],
+        File,
         {
             "argstr": "-seed_random_per_voxel",
             "help_string": """seed a fixed number of streamlines per voxel in a mask image; random placement of seeds in each voxel""",
@@ -164,7 +168,7 @@ input_fields = [
     ),
     (
         "seed_grid_per_voxel",
-        specs.MultiInputObj[ty.Tuple[ImageIn, ImageIn]],
+        File,
         {
             "argstr": "-seed_grid_per_voxel",
             "help_string": """seed a fixed number of streamlines per voxel in a mask image; place seeds on a 3D mesh grid (grid_size argument is per axis; so a grid_size of 3 results in 27 seeds per voxel)""",
@@ -172,7 +176,7 @@ input_fields = [
     ),
     (
         "seed_rejection",
-        specs.MultiInputObj[ImageIn],
+        File,
         {
             "argstr": "-seed_rejection",
             "help_string": """seed from an image using rejection sampling (higher values = more probable to seed from)""",
@@ -180,7 +184,7 @@ input_fields = [
     ),
     (
         "seed_gmwmi",
-        specs.MultiInputObj[ImageIn],
+        File,
         {
             "argstr": "-seed_gmwmi",
             "help_string": """seed from the grey matter - white matter interface (only valid if using ACT framework). Input image should be a 3D seeding volume; seeds drawn within this image will be optimised to the interface using the 5TT image provided using the -act option.""",
@@ -188,7 +192,7 @@ input_fields = [
     ),
     (
         "seed_dynamic",
-        ImageIn,
+        File,
         {
             "argstr": "-seed_dynamic",
             "help_string": """determine seed points dynamically using the SIFT model (must not provide any other seeding mechanism). Note that while this seeding mechanism improves the distribution of reconstructed streamlines density, it should NOT be used as a substitute for the SIFT method itself.""",
@@ -229,27 +233,26 @@ input_fields = [
     ),
     (
         "seed_direction",
-        ty.List[float],
+        File,
         {
             "argstr": "-seed_direction",
             "help_string": """specify a seeding direction for the tracking (this should be supplied as a vector of 3 comma-separated values.""",
             "sep": ",",
         },
     ),
-    (
-        "output_seeds",
-        ty.Union[Path, bool],
-        False,
-        {
-            "argstr": "-output_seeds",
-            "output_file_template": "output_seeds.txt",
-            "help_string": """output the seed location of all successful streamlines to a file""",
-        },
-    ),
+    # (
+    #     "output_seeds",
+    #     File,
+    #     {
+    #         "argstr": "-output_seeds",
+    #         "output_file_template": "output_seeds.txt",
+    #         "help_string": """output the seed location of all successful streamlines to a file""",
+    #     },
+    # ),
     # Region Of Interest processing options Option Group
     (
         "include",
-        specs.MultiInputObj[ty.Any],
+        File,
         {
             "argstr": "-include",
             "help_string": """specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.""",
@@ -257,7 +260,7 @@ input_fields = [
     ),
     (
         "include_ordered",
-        specs.MultiInputObj[str],
+        File,
         {
             "argstr": "-include_ordered",
             "help_string": """specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion_ordered regions in the order they are specified in order to be accepted.""",
@@ -265,7 +268,7 @@ input_fields = [
     ),
     (
         "exclude",
-        specs.MultiInputObj[ty.Any],
+        File,
         {
             "argstr": "-exclude",
             "help_string": """specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.""",
@@ -273,7 +276,7 @@ input_fields = [
     ),
     (
         "mask",
-        specs.MultiInputObj[ty.Any],
+        File,    
         {
             "argstr": "-mask",
             "help_string": """specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.""",
@@ -282,7 +285,7 @@ input_fields = [
     # Anatomically-Constrained Tractography options Option Group
     (
         "act",
-        ImageIn,
+        File,
         {
             "argstr": "-act",
             "help_string": """use the Anatomically-Constrained Tractography framework during tracking; provided image must be in the 5TT (five-tissue-type) format""",
@@ -406,26 +409,29 @@ input_fields = [
     ),
 ]
 
-tckgen_input_spec = specs.SpecInfo(
-    name="tckgen_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckGenInputSpec = specs.SpecInfo(
+    name="TckGenInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
-
 
 output_fields = [
     (
-        "output_seeds",
+        "tracks",
         File,
         {
-            "help_string": """output the seed location of all successful streamlines to a file""",
+            "argstr": "",
+            "position": 1,
+            "help_string": """the output file containing the tracks generated.""",
+            "mandatory": False,
+            "output_file_template": "tractogram.tck",
         },
-    ),
+    )
 ]
-tckgen_output_spec = specs.SpecInfo(
-    name="tckgen_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckGenOutputSpec = specs.SpecInfo(
+    name="TckGenOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tckgen(ShellCommandTask):
+class TckGen(ShellCommandTask):
     """By default, tckgen produces a fixed number of streamlines, by attempting to seed from new random locations until the target number of streamlines have been selected (in other words, after all inclusion & exclusion criteria have been applied), or the maximum number of seeds has been exceeded (by default, this is 1000 x the desired number of selected streamlines). Use the -select and/or -seeds options to modify as required. See also the Seeding options section for alternative seeding strategies.
 
         Below is a list of available tracking algorithms, the input image data that they require, and a brief description of their behaviour:
@@ -489,11 +495,11 @@ class tckgen(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -510,5 +516,5 @@ class tckgen(ShellCommandTask):
     """
 
     executable = "tckgen"
-    input_spec = tckgen_input_spec
-    output_spec = tckgen_output_spec
+    input_spec = TckGenInputSpec
+    output_spec = TckGenOutputSpec

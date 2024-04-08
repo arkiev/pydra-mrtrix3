@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -112,8 +114,8 @@ input_fields = [
     ),
 ]
 
-fixel2tsf_input_spec = specs.SpecInfo(
-    name="fixel2tsf_input", fields=input_fields, bases=(specs.ShellSpec,)
+Fixel2TsfInputSpec = specs.SpecInfo(
+    name="Fixel2TsfInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -126,12 +128,12 @@ output_fields = [
         },
     ),
 ]
-fixel2tsf_output_spec = specs.SpecInfo(
-    name="fixel2tsf_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Fixel2TsfOutputSpec = specs.SpecInfo(
+    name="Fixel2TsfOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class fixel2tsf(ShellCommandTask):
+class Fixel2Tsf(ShellCommandTask):
     """This command is useful for visualising all brain fixels (e.g. the output from fixelcfestats) in 3D.
 
         Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
@@ -147,11 +149,11 @@ class fixel2tsf(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -168,5 +170,5 @@ class fixel2tsf(ShellCommandTask):
     """
 
     executable = "fixel2tsf"
-    input_spec = fixel2tsf_input_spec
-    output_spec = fixel2tsf_output_spec
+    input_spec = Fixel2TsfInputSpec
+    output_spec = Fixel2TsfOutputSpec

@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,8 +10,8 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
-        ImageIn,
+        "in_file",
+        str,
         {
             "argstr": "",
             "position": 0,
@@ -18,19 +20,19 @@ input_fields = [
         },
     ),
     (
-        "output",
-        Path,
+        "out_file",
+        str,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
     # Affine transformation options Option Group
     (
         "linear",
-        File,
+        str,
         {
             "argstr": "-linear",
             "help_string": """specify a linear transform to apply, in the form of a 3x4 or 4x4 ascii file. Note the standard 'reverse' convention is used, where the transform maps points in the template image to the moving image. Note that the reverse convention is still assumed even if no -template image is supplied""",
@@ -80,7 +82,7 @@ input_fields = [
     # Regridding options Option Group
     (
         "template",
-        ImageIn,
+        str,
         {
             "argstr": "-template",
             "help_string": """reslice the input image to match the specified template image grid.""",
@@ -350,14 +352,14 @@ jac: modulate the image intensity with the determinant of the Jacobian of the wa
     ),
 ]
 
-mrtransform_input_spec = specs.SpecInfo(
-    name="mrtransform_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrTransformInputSpec = specs.SpecInfo(
+    name="MrTransformInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image.""",
@@ -378,12 +380,12 @@ output_fields = [
         },
     ),
 ]
-mrtransform_output_spec = specs.SpecInfo(
-    name="mrtransform_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrTransformOutputSpec = specs.SpecInfo(
+    name="MrTransformOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrtransform(ShellCommandTask):
+class MrTransform(ShellCommandTask):
     """If a linear transform is applied without a template image the command will modify the image header transform matrix
 
         FOD reorientation (with apodised point spread functions) can be performed if the number of volumes in the 4th dimension equals the number of coefficients in an antipodally symmetric spherical harmonic series (e.g. 6, 15, 28 etc). For such data, the -reorient_fod yes/no option must be used to specify if reorientation is required.
@@ -410,11 +412,11 @@ class mrtransform(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com) and David Raffelt (david.raffelt@florey.edu.au) and Max Pietsch (maximilian.pietsch@kcl.ac.uk)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -431,5 +433,5 @@ class mrtransform(ShellCommandTask):
     """
 
     executable = "mrtransform"
-    input_spec = mrtransform_input_spec
-    output_spec = mrtransform_output_spec
+    input_spec = MrTransformInputSpec
+    output_spec = MrTransformOutputSpec

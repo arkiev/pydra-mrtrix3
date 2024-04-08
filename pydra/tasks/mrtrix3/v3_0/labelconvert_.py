@@ -1,15 +1,17 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
 from fileformats.medimage_mrtrix3 import ImageIn, ImageOut, Tracks  # noqa: F401
 from pydra.engine import specs, ShellCommandTask
 
- 
+
 input_fields = [
     # Arguments
     (
         "path_in",
-        str,
+        File,
         {
             "argstr": "",
             "position": 0,
@@ -38,8 +40,8 @@ input_fields = [
         },
     ),
     (
-        "path_out",
-        str,
+        "image_out",
+        Path,
         {
             "argstr": "",
             "position": 3,
@@ -49,7 +51,7 @@ input_fields = [
     ),
     (
         "spine",
-        ImageIn,
+        File,
         {
             "argstr": "-spine",
             "help_string": """provide a manually-defined segmentation of the base of the spine where the streamlines terminate, so that this can become a node in the connection matrix.""",
@@ -122,26 +124,26 @@ input_fields = [
     ),
 ]
 
-labelconvert_input_spec = specs.SpecInfo(
-    name="labelconvert_input", fields=input_fields, bases=(specs.ShellSpec,)
+LabelConvertInputSpec = specs.SpecInfo(
+    name="LabelConvertInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "path_out",
-        ImageOut,
+        "image_out",
+        File,
         {
             "help_string": """the output image""",
         },
     ),
 ]
-labelconvert_output_spec = specs.SpecInfo(
-    name="labelconvert_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+LabelConvertOutputSpec = specs.SpecInfo(
+    name="LabelConvertOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class labelconvert(ShellCommandTask):
+class LabelConvert(ShellCommandTask):
     """Typical usage is to convert a parcellation image provided by some other software, based on the lookup table provided by that software, to conform to a new lookup table, particularly one where the node indices increment from 1, in preparation for connectome construction; examples of such target lookup table files are provided in share//mrtrix3//labelconvert//, but can be created by the user to provide the desired node set // ordering // colours.
 
         A more thorough description of the operation and purpose of the labelconvert command can be found in the online documentation:
@@ -168,11 +170,11 @@ class labelconvert(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -189,5 +191,5 @@ class labelconvert(ShellCommandTask):
     """
 
     executable = "labelconvert"
-    input_spec = labelconvert_input_spec
-    output_spec = labelconvert_output_spec
+    input_spec = LabelConvertInputSpec
+    output_spec = LabelConvertOutputSpec

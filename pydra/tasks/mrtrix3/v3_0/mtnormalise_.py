@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -7,19 +9,84 @@ from pydra.engine import specs, ShellCommandTask
 
 input_fields = [
     # Arguments
+    # (
+    #     "input_output",
+    #     specs.MultiInputObj[ty.Any],
+    #     {
+    #         "argstr": "",
+    #         "position": 0,
+    #         "help_string": """list of all input and output tissue compartment files (see example usage).""",
+    #         "mandatory": True,
+    #     },
+    # ),
     (
-        "input_output",
-        specs.MultiInputObj[ty.Any],
+        "fod_wm",
+        File,
         {
             "argstr": "",
             "position": 0,
-            "help_string": """list of all input and output tissue compartment files (see example usage).""",
-            "mandatory": True,
+            "help_string": "WM FOD",
         },
     ),
     (
+        "fod_wm_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 1,
+            "help_string": "WM FOD",
+            "output_file_template": "wm_FOD_norm.mif",
+
+        },
+    ),
+
+    (
+        "fod_gm",
+        File,
+        {
+            "argstr": "",
+            "position": 2,
+            "help_string": "GM FOD",
+        },
+    ),
+
+    (   
+        "fod_gm_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 3,
+            "help_string": "GM FOD",
+            "output_file_template": "gm_FOD_norm.mif",
+
+        },
+    ),
+
+    (
+        "fod_csf",
+        File,
+        {
+            "argstr": "",
+            "position": 4,
+            "help_string": "CSF FOD",
+        },
+    ),
+
+    (
+        "fod_csf_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 5,
+            "help_string": "csf FOD",
+            "output_file_template": "csf_FOD_norm.mif",
+
+        },
+    ),
+
+    (
         "mask",
-        ImageIn,
+        File,
         {
             "argstr": "-mask",
             "help_string": """the mask defines the data used to compute the intensity normalisation. This option is mandatory.""",
@@ -158,22 +225,22 @@ input_fields = [
     ),
 ]
 
-mtnormalise_input_spec = specs.SpecInfo(
-    name="mtnormalise_input", fields=input_fields, bases=(specs.ShellSpec,)
+MtNormaliseInputSpec = specs.SpecInfo(
+    name="MtNormaliseInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
         "check_norm",
-        ImageOut,
+        File,
         {
             "help_string": """output the final estimated spatially varying intensity level that is used for normalisation.""",
         },
     ),
     (
         "check_mask",
-        ImageOut,
+        File,
         {
             "help_string": """output the final mask used to compute the normalisation. This mask excludes regions identified as outliers by the optimisation process.""",
         },
@@ -185,13 +252,48 @@ output_fields = [
             "help_string": """output the tissue balance factors computed during normalisation.""",
         },
     ),
+    (
+        "fod_wm_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 1,
+            "help_string": "WM FOD",
+            "output_file_template": "wm_FOD_norm.mif",
+
+        },
+    ),
+    (   
+        "fod_gm_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 3,
+            "help_string": "GM FOD",
+            "output_file_template": "gm_FOD_norm.mif",
+
+        },
+    ),
+
+    (
+        "fod_csf_norm",
+        Path,
+        {
+            "argstr": "",
+            "position": 5,
+            "help_string": "csf FOD",
+            "output_file_template": "csf_FOD_norm.mif",
+
+        },
+    ),
+
 ]
-mtnormalise_output_spec = specs.SpecInfo(
-    name="mtnormalise_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MtNormaliseOutputSpec = specs.SpecInfo(
+    name="MtNormaliseOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mtnormalise(ShellCommandTask):
+class MtNormalise(ShellCommandTask):
     """This command takes as input any number of tissue components (e.g. from multi-tissue CSD) and outputs corresponding normalised tissue components corrected for the effects of (residual) intensity inhomogeneities. Intensity normalisation is performed by optimising the voxel-wise sum of all tissue compartments towards a constant value, under constraints of spatial smoothness (polynomial basis of a given order). Different to the Raffelt et al. 2017 abstract, this algorithm performs this task in the log-domain instead, with added gradual outlier rejection, different handling of the balancing factors between tissue compartments and a different iteration structure.
 
         The -mask option is mandatory and is optimally provided with a brain mask (such as the one obtained from dwi2mask earlier in the processing pipeline). Outlier areas with exceptionally low or high combined tissue contributions are accounted for and reoptimised as the intensity inhomogeneity estimation becomes more accurate.
@@ -221,11 +323,11 @@ class mtnormalise(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara (rami.tabbara@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au), Jonas Rosnarho-Tornstrand (jonas.rosnarho-tornstrand@kcl.ac.uk) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -242,5 +344,5 @@ class mtnormalise(ShellCommandTask):
     """
 
     executable = "mtnormalise"
-    input_spec = mtnormalise_input_spec
-    output_spec = mtnormalise_output_spec
+    input_spec = MtNormaliseInputSpec
+    output_spec = MtNormaliseOutputSpec

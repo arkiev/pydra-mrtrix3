@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         ImageIn,
         {
             "argstr": "",
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.txt",
+            "output_file_template": "out_file.txt",
             "help_string": """the output mesh file.""",
         },
     ),
@@ -110,26 +112,26 @@ input_fields = [
     ),
 ]
 
-voxel2mesh_input_spec = specs.SpecInfo(
-    name="voxel2mesh_input", fields=input_fields, bases=(specs.ShellSpec,)
+Voxel2MeshInputSpec = specs.SpecInfo(
+    name="Voxel2MeshInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         File,
         {
             "help_string": """the output mesh file.""",
         },
     ),
 ]
-voxel2mesh_output_spec = specs.SpecInfo(
-    name="voxel2mesh_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Voxel2MeshOutputSpec = specs.SpecInfo(
+    name="Voxel2MeshOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class voxel2mesh(ShellCommandTask):
+class Voxel2Mesh(ShellCommandTask):
     """This command utilises the Marching Cubes algorithm to generate a polygonal surface that represents the isocontour(s) of the input image at a particular intensity. By default, an appropriate threshold will be determined automatically from the input image, however the intensity value of the isocontour(s) can instead be set manually using the -threhsold option.
 
         If the -blocky option is used, then the Marching Cubes algorithm will not be used. Instead, the input image will be interpreted as a binary mask image, and polygonal surfaces will be generated at the outer faces of the voxel clusters within the mask.
@@ -144,11 +146,11 @@ class voxel2mesh(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -165,5 +167,5 @@ class voxel2mesh(ShellCommandTask):
     """
 
     executable = "voxel2mesh"
-    input_spec = voxel2mesh_input_spec
-    output_spec = voxel2mesh_output_spec
+    input_spec = Voxel2MeshInputSpec
+    output_spec = Voxel2MeshOutputSpec

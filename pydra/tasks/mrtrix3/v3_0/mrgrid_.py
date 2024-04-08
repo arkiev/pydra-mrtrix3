@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         File,
         {
             "argstr": "",
@@ -29,19 +31,19 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image.""",
         },
     ),
     # Regridding options (involves image interpolation, applied to spatial axes only) Option Group
     (
         "template",
-        ImageIn,
+        File,
         {
             "argstr": "-template",
             "help_string": """match the input image grid (voxel spacing, image size, header transformation) to that of a reference image. The image resolution relative to the template image can be changed with one of -size, -voxel, -scale.""",
@@ -95,7 +97,7 @@ input_fields = [
     # Pad and crop options (no image interpolation is performed, header transformation is adjusted) Option Group
     (
         "as_",
-        ImageIn,
+        File,
         {
             "argstr": "-as",
             "help_string": """pad or crop the input image on the upper bound to match the specified reference image grid. This operation ignores differences in image transformation between input and reference image.""",
@@ -111,7 +113,7 @@ input_fields = [
     ),
     (
         "mask",
-        ImageIn,
+        File,
         {
             "argstr": "-mask",
             "help_string": """crop the input image according to the spatial extent of a mask image. The mask must share a common voxel grid with the input image but differences in image transformations are ignored. Note that even though only 3 dimensions are cropped when using a mask, the bounds are computed by checking the extent for all dimensions. Note that by default a gap of 1 voxel is left at all edges of the image to allow valid trilinear interpolation. This gap can be modified with the -uniform option but by default it does not extend beyond the FOV unless -crop_unbound is used.""",
@@ -277,26 +279,26 @@ input_fields = [
     ),
 ]
 
-mrgrid_input_spec = specs.SpecInfo(
-    name="mrgrid_input", fields=input_fields, bases=(specs.ShellSpec,)
+MrGridInputSpec = specs.SpecInfo(
+    name="MrGridInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
-        ImageOut,
+        "out_file",
+        File,
         {
             "help_string": """the output image.""",
         },
     ),
 ]
-mrgrid_output_spec = specs.SpecInfo(
-    name="mrgrid_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MrGridOutputSpec = specs.SpecInfo(
+    name="MrGridOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class mrgrid(ShellCommandTask):
+class MrGrid(ShellCommandTask):
     """- regrid: This operation performs changes of the voxel grid that require interpolation of the image such as changing the resolution or location and orientation of the voxel grid. If the image is down-sampled, the appropriate smoothing is automatically applied using Gaussian smoothing unless nearest neighbour interpolation is selected or oversample is changed explicitly. The resolution can only be changed for spatial dimensions.
 
         - crop: The image extent after cropping, can be specified either manually for each axis dimensions, or via a mask or reference image. The image can be cropped to the extent of a mask. This is useful for axially-acquired brain images, where the image size can be reduced by a factor of 2 by removing the empty space on either side of the brain. Note that cropping does not extend the image beyond the original FOV unless explicitly specified (via -crop_unbound or negative -axis extent).
@@ -340,11 +342,11 @@ class mrgrid(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk) & David Raffelt (david.raffelt@florey.edu.au) & Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -361,5 +363,5 @@ class mrgrid(ShellCommandTask):
     """
 
     executable = "mrgrid"
-    input_spec = mrgrid_input_spec
-    output_spec = mrgrid_output_spec
+    input_spec = MrGridInputSpec
+    output_spec = MrGridOutputSpec

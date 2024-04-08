@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -122,18 +124,18 @@ input_fields = [
     ),
 ]
 
-tck2fixel_input_spec = specs.SpecInfo(
-    name="tck2fixel_input", fields=input_fields, bases=(specs.ShellSpec,)
+Tck2FixelInputSpec = specs.SpecInfo(
+    name="Tck2FixelInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-tck2fixel_output_spec = specs.SpecInfo(
-    name="tck2fixel_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Tck2FixelOutputSpec = specs.SpecInfo(
+    name="Tck2FixelOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tck2fixel(ShellCommandTask):
+class Tck2Fixel(ShellCommandTask):
     """Fixel data are stored utilising the fixel directory format described in the main documentation, which can be found at the following link:
     https://mrtrix.readthedocs.io/en/3.0.4/fixel_based_analysis/fixel_directory_format.html
 
@@ -147,11 +149,11 @@ class tck2fixel(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -168,5 +170,5 @@ class tck2fixel(ShellCommandTask):
     """
 
     executable = "tck2fixel"
-    input_spec = tck2fixel_input_spec
-    output_spec = tck2fixel_output_spec
+    input_spec = Tck2FixelInputSpec
+    output_spec = Tck2FixelOutputSpec

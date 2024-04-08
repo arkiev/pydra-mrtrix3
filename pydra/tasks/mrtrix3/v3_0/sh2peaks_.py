@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn.""",
         },
     ),
@@ -150,26 +152,26 @@ input_fields = [
     ),
 ]
 
-sh2peaks_input_spec = specs.SpecInfo(
-    name="sh2peaks_input", fields=input_fields, bases=(specs.ShellSpec,)
+Sh2PeaksInputSpec = specs.SpecInfo(
+    name="Sh2PeaksInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn.""",
         },
     ),
 ]
-sh2peaks_output_spec = specs.SpecInfo(
-    name="sh2peaks_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Sh2PeaksOutputSpec = specs.SpecInfo(
+    name="Sh2PeaksOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class sh2peaks(ShellCommandTask):
+class Sh2Peaks(ShellCommandTask):
     """Peaks of the spherical harmonic function in each voxel are located by commencing a Newton search along each of a set of pre-specified directions
 
         The spherical harmonic coefficients are stored according to the conventions described in the main documentation, which can be found at the following link:
@@ -187,11 +189,11 @@ class sh2peaks(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -208,5 +210,5 @@ class sh2peaks(ShellCommandTask):
     """
 
     executable = "sh2peaks"
-    input_spec = sh2peaks_input_spec
-    output_spec = sh2peaks_output_spec
+    input_spec = Sh2PeaksInputSpec
+    output_spec = Sh2PeaksOutputSpec

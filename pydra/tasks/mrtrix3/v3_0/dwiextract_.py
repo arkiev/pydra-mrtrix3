@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,8 +10,8 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
-        File,
+        "in_file",
+        str,
         {
             "argstr": "",
             "position": 0,
@@ -18,12 +20,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output image (diffusion-weighted volumes by default).""",
         },
     ),
@@ -206,14 +208,14 @@ WARNING: note that, even though the b=0 volumes are never referred to as shells 
     ),
 ]
 
-dwiextract_input_spec = specs.SpecInfo(
-    name="dwiextract_input", fields=input_fields, bases=(specs.ShellSpec,)
+DwiExtractInputSpec = specs.SpecInfo(
+    name="DwiExtractInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         ImageOut,
         {
             "help_string": """the output image (diffusion-weighted volumes by default).""",
@@ -234,12 +236,12 @@ output_fields = [
         },
     ),
 ]
-dwiextract_output_spec = specs.SpecInfo(
-    name="dwiextract_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+DwiExtractOutputSpec = specs.SpecInfo(
+    name="DwiExtractOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class dwiextract(ShellCommandTask):
+class DwiExtract(ShellCommandTask):
     """
         Example usages
         --------------
@@ -261,11 +263,11 @@ class dwiextract(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander (thijs.dhollander@gmail.com) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -282,5 +284,5 @@ class dwiextract(ShellCommandTask):
     """
 
     executable = "dwiextract"
-    input_spec = dwiextract_input_spec
-    output_spec = dwiextract_output_spec
+    input_spec = DwiExtractInputSpec
+    output_spec = DwiExtractOutputSpec

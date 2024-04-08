@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         specs.MultiInputObj[File],
         {
             "argstr": "",
@@ -102,18 +104,18 @@ input_fields = [
     ),
 ]
 
-transformcompose_input_spec = specs.SpecInfo(
-    name="transformcompose_input", fields=input_fields, bases=(specs.ShellSpec,)
+TransformComposeInputSpec = specs.SpecInfo(
+    name="TransformComposeInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = []
-transformcompose_output_spec = specs.SpecInfo(
-    name="transformcompose_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TransformComposeOutputSpec = specs.SpecInfo(
+    name="TransformComposeOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class transformcompose(ShellCommandTask):
+class TransformCompose(ShellCommandTask):
     """Any linear transforms must be supplied as a 4x4 matrix in a text file (e.g. as per the output of mrregister). Any warp fields must be supplied as a 4D image representing a deformation field (e.g. as output from mrrregister -nl_warp).
 
         Input transformations should be provided to the command in the order in which they would be applied to an image if they were to be applied individually.
@@ -130,11 +132,11 @@ class transformcompose(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -151,5 +153,5 @@ class transformcompose(ShellCommandTask):
     """
 
     executable = "transformcompose"
-    input_spec = transformcompose_input_spec
-    output_spec = transformcompose_output_spec
+    input_spec = TransformComposeInputSpec
+    output_spec = TransformComposeOutputSpec

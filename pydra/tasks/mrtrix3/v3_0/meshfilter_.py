@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "input",
+        "in_file",
         File,
         {
             "argstr": "",
@@ -29,12 +31,12 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 2,
-            "output_file_template": "output.txt",
+            "output_file_template": "out_file.txt",
             "help_string": """the output mesh file""",
         },
     ),
@@ -122,26 +124,26 @@ input_fields = [
     ),
 ]
 
-meshfilter_input_spec = specs.SpecInfo(
-    name="meshfilter_input", fields=input_fields, bases=(specs.ShellSpec,)
+MeshFilterInputSpec = specs.SpecInfo(
+    name="MeshFilterInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
+        "out_file",
         File,
         {
             "help_string": """the output mesh file""",
         },
     ),
 ]
-meshfilter_output_spec = specs.SpecInfo(
-    name="meshfilter_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+MeshFilterOutputSpec = specs.SpecInfo(
+    name="MeshFilterOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class meshfilter(ShellCommandTask):
+class MeshFilter(ShellCommandTask):
     """While this command has only one filter operation currently available, it nevertheless presents with a comparable interface to the MRtrix3 commands maskfilter and mrfilter commands.
 
 
@@ -165,11 +167,11 @@ class meshfilter(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -186,5 +188,5 @@ class meshfilter(ShellCommandTask):
     """
 
     executable = "meshfilter"
-    input_spec = meshfilter_input_spec
-    output_spec = meshfilter_output_spec
+    input_spec = MeshFilterInputSpec
+    output_spec = MeshFilterOutputSpec

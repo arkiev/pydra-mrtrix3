@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -120,8 +122,8 @@ input_fields = [
     ),
 ]
 
-afdconnectivity_input_spec = specs.SpecInfo(
-    name="afdconnectivity_input", fields=input_fields, bases=(specs.ShellSpec,)
+AfdConnectivityInputSpec = specs.SpecInfo(
+    name="AfdConnectivityInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -134,12 +136,12 @@ output_fields = [
         },
     ),
 ]
-afdconnectivity_output_spec = specs.SpecInfo(
-    name="afdconnectivity_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+AfdConnectivityOutputSpec = specs.SpecInfo(
+    name="AfdConnectivityOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class afdconnectivity(ShellCommandTask):
+class AfdConnectivity(ShellCommandTask):
     """This estimate is obtained by determining a fibre volume (AFD) occupied by the pathway of interest, and dividing by the streamline length.
 
         If only the streamlines belonging to the pathway of interest are provided, then ALL of the fibre volume within each fixel selected will contribute to the result. If the -wbft option is used to provide whole-brain fibre-tracking (of which the pathway of interest should contain a subset), only the fraction of the fibre volume in each fixel estimated to belong to the pathway of interest will contribute to the result.
@@ -164,11 +166,11 @@ class afdconnectivity(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -185,5 +187,5 @@ class afdconnectivity(ShellCommandTask):
     """
 
     executable = "afdconnectivity"
-    input_spec = afdconnectivity_input_spec
-    output_spec = afdconnectivity_output_spec
+    input_spec = AfdConnectivityInputSpec
+    output_spec = AfdConnectivityOutputSpec

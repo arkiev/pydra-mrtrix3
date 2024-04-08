@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -256,8 +258,8 @@ input_fields = [
     ),
 ]
 
-tensor2metric_input_spec = specs.SpecInfo(
-    name="tensor2metric_input", fields=input_fields, bases=(specs.ShellSpec,)
+Tensor2MetricInputSpec = specs.SpecInfo(
+    name="Tensor2MetricInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -347,12 +349,12 @@ output_fields = [
         },
     ),
 ]
-tensor2metric_output_spec = specs.SpecInfo(
-    name="tensor2metric_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+Tensor2MetricOutputSpec = specs.SpecInfo(
+    name="Tensor2MetricOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tensor2metric(ShellCommandTask):
+class Tensor2Metric(ShellCommandTask):
     """
         References
         ----------
@@ -367,11 +369,11 @@ class tensor2metric(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Ben Jeurissen (ben.jeurissen@uantwerpen.be), Thijs Dhollander (thijs.dhollander@gmail.com) & J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -388,5 +390,5 @@ class tensor2metric(ShellCommandTask):
     """
 
     executable = "tensor2metric"
-    input_spec = tensor2metric_input_spec
-    output_spec = tensor2metric_output_spec
+    input_spec = Tensor2MetricInputSpec
+    output_spec = Tensor2MetricOutputSpec

@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -8,7 +10,7 @@ from pydra.engine import specs, ShellCommandTask
 input_fields = [
     # Arguments
     (
-        "tracks",
+        "in_tracks",
         File,
         {
             "argstr": "",
@@ -18,19 +20,19 @@ input_fields = [
         },
     ),
     (
-        "output",
+        "out_file",
         Path,
         {
             "argstr": "",
             "position": 1,
-            "output_file_template": "output.mif",
+            "output_file_template": "out_file.mif",
             "help_string": """the output track-weighted image""",
         },
     ),
     # Options for the header of the output image Option Group
     (
         "template",
-        ImageIn,
+        File,
         {
             "argstr": "-template",
             "help_string": """an image file to be used as a template for the output (the output image will have the same transform and field of view).""",
@@ -38,7 +40,7 @@ input_fields = [
     ),
     (
         "vox",
-        ty.List[float],
+        float,
         {
             "argstr": "-vox",
             "help_string": """provide either an isotropic voxel size (in mm), or comma-separated list of 3 voxel dimensions.""",
@@ -316,26 +318,26 @@ Options are: sum, min, mean, max, median, mean_nonzero, gaussian, ends_min, ends
     ),
 ]
 
-tckmap_input_spec = specs.SpecInfo(
-    name="tckmap_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckMapInputSpec = specs.SpecInfo(
+    name="TckMapInput", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
 output_fields = [
     (
-        "output",
-        ImageOut,
+        "out_file",
+        File,
         {
             "help_string": """the output track-weighted image""",
         },
     ),
 ]
-tckmap_output_spec = specs.SpecInfo(
-    name="tckmap_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckMapOutputSpec = specs.SpecInfo(
+    name="TckMapOutput", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tckmap(ShellCommandTask):
+class TckMap(ShellCommandTask):
     """The -contrast option controls how a value is derived for each streamline that is subsequently contributed to the image elements intersected by that streamline, and therefore strongly influences the contrast of that image. The permissible values are briefly summarised as follows:
 
         - tdi: Each streamline effectively contributes a value of unity to the final map (equivalent to the original Track Density Imaging (TDI) method)
@@ -389,11 +391,11 @@ class tckmap(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -410,5 +412,5 @@ class tckmap(ShellCommandTask):
     """
 
     executable = "tckmap"
-    input_spec = tckmap_input_spec
-    output_spec = tckmap_output_spec
+    input_spec = TckMapInputSpec
+    output_spec = TckMapOutputSpec

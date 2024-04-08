@@ -1,3 +1,5 @@
+# Auto-generated from MRtrix C++ command with '__print_usage_pydra__' secret option
+
 import typing as ty
 from pathlib import Path  # noqa: F401
 from fileformats.generic import File, Directory  # noqa: F401
@@ -19,7 +21,7 @@ input_fields = [
     ),
     (
         "in_fod",
-        ImageIn,
+        File,
         {
             "argstr": "",
             "position": 1,
@@ -40,7 +42,7 @@ input_fields = [
     # Options for setting the processing mask for the SIFT fixel-streamlines comparison model Option Group
     (
         "proc_mask",
-        ImageIn,
+        File,
         {
             "argstr": "-proc_mask",
             "help_string": """provide an image containing the processing mask weights for the model; image spatial dimensions must match the fixel image""",
@@ -48,7 +50,7 @@ input_fields = [
     ),
     (
         "act",
-        ImageIn,
+        File,
         {
             "argstr": "-act",
             "help_string": """use an ACT five-tissue-type segmented anatomical image to derive the processing mask""",
@@ -108,8 +110,7 @@ input_fields = [
     ),
     (
         "out_mu",
-        ty.Union[Path, bool],
-        False,
+        str,
         {
             "argstr": "-out_mu",
             "output_file_template": "out_mu.txt",
@@ -301,8 +302,8 @@ input_fields = [
     ),
 ]
 
-tcksift2_input_spec = specs.SpecInfo(
-    name="tcksift2_input", fields=input_fields, bases=(specs.ShellSpec,)
+TckSift2InputSpec = specs.SpecInfo(
+    name="TckSift2Input", fields=input_fields, bases=(specs.ShellSpec,)
 )
 
 
@@ -343,12 +344,12 @@ output_fields = [
         },
     ),
 ]
-tcksift2_output_spec = specs.SpecInfo(
-    name="tcksift2_output", fields=output_fields, bases=(specs.ShellOutSpec,)
+TckSift2OutputSpec = specs.SpecInfo(
+    name="TckSift2Output", fields=output_fields, bases=(specs.ShellOutSpec,)
 )
 
 
-class tcksift2(ShellCommandTask):
+class TckSift2(ShellCommandTask):
     """
         References
         ----------
@@ -364,11 +365,11 @@ class tcksift2(ShellCommandTask):
         MRtrix
         ------
 
-            Version:3.0.4-658-gded202e6-dirty, built Aug 28 2023
+            Version:3.0.4-699-g04cb84da, built Feb 26 2024
 
             Author: Robert E. Smith (robert.smith@florey.edu.au)
 
-            Copyright: Copyright (c) 2008-2023 the MRtrix3 contributors.
+            Copyright: Copyright (c) 2008-2024 the MRtrix3 contributors.
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -385,5 +386,5 @@ class tcksift2(ShellCommandTask):
     """
 
     executable = "tcksift2"
-    input_spec = tcksift2_input_spec
-    output_spec = tcksift2_output_spec
+    input_spec = TckSift2InputSpec
+    output_spec = TckSift2OutputSpec
